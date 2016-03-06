@@ -1,0 +1,369 @@
+.bbpm {
+	position: relative;
+}
+.bbpm .bbpm-top-right {
+	display: none!important;
+}
+.bbpm .bbpm-top-right .avatar {
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+}
+.bbpm .single-pm .entry-title {
+	display: inline-flex!important;
+}
+.bbpm .single-pm .entry-title a {
+	display: inline-block!important;
+}
+.bbpm .bbpm-input textarea {
+	width: 100%;
+	min-height: 80px;
+}
+.bbpm .bbpm-input input[type="submit"] {
+	margin-top: 5px;
+}
+.single-pm .bbpm-messages {
+	margin: 17px 0;
+}
+.single-message {
+	display: block!important;
+	margin-bottom: 1.5em;
+	overflow: hidden;
+}
+.single-message.mine {}
+.single-message.their {}
+.single-message .avatar-container {}
+.single-message.mine .avatar-container {
+	float: right;
+}
+.single-message.their .avatar-container {}
+.avatar-container,
+.message-content {
+	display: inline-block!important;
+	vertical-align: top;
+	max-width: 70%;
+}
+.avatar-container span {
+	display: block!important;
+}
+.message-content-text {
+	border: 1px solid #ddd;
+	padding: 8px 10px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	position: relative;
+}
+.message-content-text > p {
+	overflow: hidden;
+}
+.single-message.mine .message-content {
+	float: right;
+	margin-right: 15px;
+	max-width: 70%;
+}
+.single-message.their .message-content-text {
+	float: none;
+	margin-left: 15px;
+}
+.single-message .message-content-text:before,
+.single-message .message-content-text:after {
+	content: "";
+	border: 7px solid transparent;
+	position: absolute;
+	z-index: 777;
+	-webkit-transform: translateX(100%) translateY(-50%);
+	-ms-transform: translateX(100%) translateY(-50%);
+	transform: translateX(100%) translateY(-50%);
+}
+.single-message.mine .message-content-text:after {
+	border-left-color: #ddd;
+	right: 0;
+	top: 1em;
+}
+.single-message.their .message-content-text:before {
+	border-right-color: #ddd;
+	left: -28px;
+	top: 1em;
+}
+.single-message .message-content-text p {
+	margin-bottom: 1px;
+}
+.message-content > p,
+.message-content > div {
+	display: block!important;
+}
+.bbpm .avatar-container {
+	text-align: center;
+}
+.bbpm .avatar-container img {
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+	margin: 0 auto;
+}
+.bbpm .message-content .message-meta {
+	transition: All .2s;
+	-webkit-transition: All .2s;
+	opacity: .7;
+}
+.bbpm .single-message.their .message-meta {
+	margin-left: 1.3em;
+}
+.bbpm .message-content:hover .message-meta,
+.bbpm .message-content:active .message-meta {
+	opacity: 1;
+	-webkit-opacity: 1;
+}
+.bbpm .message-content .message-meta span {
+	display: inline-block!important;
+}
+.bbpm .single-message.their .message-content-text {
+	background: #FBFBFB;
+}
+.bbpm-top-header {
+	border: 1px solid #D6D6D6;
+	padding: 1em;
+	text-align: center;
+	margin-top: 5px;
+	background: #FBFBFB;
+	position: relative;
+}
+.bbpm-top-header.bbpm-index-top {
+	margin-bottom: 10px;
+}
+.bbpm-top-header a,
+.bbpm-top-header span {
+	display: inline-block!important;
+}
+.bbpm-top-header .message-tools {
+    margin-top: 8px;
+}
+.bbpm-top-header .avatar {
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+}
+/**
+  * Some stuff require JavaScript, for the sake of confirmation dialogs mostly,
+  * so hiding them when no JS loaded or JS conflict/error
+  * You can overwrite this with a CSS hack
+  */
+.bbpm.no-js .single-pm .bbpm-top-header .message-tools > a,
+.bbpm.no-js .bbpm-toggle-help,
+.bbpm.no-js .message-meta > span > a {
+	display:none!important;
+}
+.bbpm-top-header .message-tools form {
+	margin: 0 auto;
+	display: table!important;
+	margin-bottom: 5px;
+}
+.bbpm .bbpm-seen-notice {
+	text-align: center;
+	font-style: italic;
+	font-size: 90%;
+}
+.bbpm-archive {}
+.bbpm-archive .message-snippet {
+    display: block!important;
+    border: 1px solid #D8D8D8;
+    padding: 16px 12px;
+    min-height: 70px;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    -webkit-border-radius: 3px;
+    cursor: pointer;
+    transition: All .2s;
+    -webkit-transition: All .2s;
+    position: relative;
+}
+.bbpm-archive .message-snippet.unread {
+	background-color: #FFD2D2;
+}
+.bbpm-archive .message-snippet .avatar-cont,
+.bbpm-archive .message-snippet .content-cont {
+	overflow: hidden;
+}
+.bbpm-archive .message-snippet .avatar-cont {
+    float: left;
+}
+.bbpm-archive .message-snippet .avatar-cont img {
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+}
+.bbpm-archive .message-snippet .content-cont {
+	margin-left: 60px;
+	padding-left: 10px;
+	position: static;
+}
+.bbpm-archive .message-snippet .contact-date {
+	display: flex!important;
+	justify-content: flex-start;
+}
+.bbpm-archive .content-cont:before {
+	content: '';
+	position: absolute;
+	height: 100%;
+	top: 0;
+	background: #D8D8D8;
+	width: 1px;
+	margin-left: -10px;
+}
+.bbpm-archive .message-snippet .contact-date span {}
+.bbpm-archive .message-snippet .contact-date span:nth-child(1) {
+	font-weight: bold;
+	font-size: 120%;
+	margin-left: 0;
+}
+.bbpm-archive .message-snippet .contact-date span:nth-child(2) {
+	margin-left: auto;
+}
+.bbpm-archive .message-snippet .content-excerpt {
+	display: block!important;
+	margin-top: 3px;
+}
+.bbpm-archive .message-snippet:hover {
+	background: #F7F7F7;
+}
+
+.message-content a {
+	display: inline-block!important;
+}
+.message-content iframe,
+.message-content img {
+	max-width: 100%!important;
+	margin: 5px 0;
+	display: block!important;
+}
+
+.bbpm-single-help {
+	display: none!important;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(85, 85, 85, 0.81);
+	color: #fff;
+	overflow: auto;
+	padding: 3px;
+	text-align: left;
+	z-index: 777;
+}
+.bbpm-single-help code {
+	display: inline-block!important;
+}
+.bbpm-top-header.help .bbpm-single-help {
+	display: block!important;
+}
+span.bbpm-toggle-help {
+	position: absolute;
+	right: 6px;
+	bottom: 2px;
+	cursor: pointer;
+}
+.bbpm-top-header.help span.bbpm-toggle-help {
+	color: #fff;
+	position: static;
+	float: right;
+	margin-right: 2px;
+}
+.bbpm .content-excerpt .bbpm-snippet-author {
+	display: inline-block!important;
+	font-style: italic;
+}
+.bbpm .content-excerpt .bbpm-snippet-author:after {
+	content: ':';
+}
+.bbpm .content-excerpt .bbpm-snippet-author .avatar {
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+}
+.bbpm .bbpm-input form.disabled {
+	opacity: .7;
+	-webkit-opacity: .7;
+	margin-top: 2px;
+}
+.bbpm .bbpm-input .bbpm-cant-contact {
+	text-align: center;
+	margin: 4px 0;
+}
+
+.bbpm .no-messages {
+	text-align: center;
+	margin: 2.5em auto;
+}
+.bbpm-pagination span,
+.bbpm-pagination a {
+	border: 1px solid #CECECE;
+	border-left-color: transparent;
+	padding: 1px 10px;
+	margin-left: -4px;
+	font-size: 90%;
+}
+.bbpm-pagination a:nth-child(1) {
+  border-left-color: #CECECE;
+}
+.bbpm-pagination > a,
+.bbpm-pagination > span {
+	color: #555;
+	text-decoration: none;
+}
+.bbpm-pagination a:hover,
+.bbpm-pagination a:active,
+.bbpm-pagination span.current {
+}
+.bbpm-pagination a:hover > span,
+.bbpm-pagination a:active > span {
+	border-left-color: #ddd;	
+}
+.bbpm-pagination a:nth-child(1) > span,
+.bbpm-pagination > span:nth-child(1) {
+	border-left-color: #CECECE;
+}
+.bbpm-pagination span {
+	transition: All .2s;
+}
+.bbpm-pagination a:nth-last-child(1) > span,
+.bbpm-pagination > span:nth-last-child(1) {
+	border-radius: 0 3px 3px 0;
+	-webkit-border-radius: 0 3px 3px 0;
+}
+.bbpm-pagination > span:nth-child(1),
+.bbpm-pagination a:nth-child(1) > span {
+	border-radius: 3px 0 0 3px;
+	-webkit-border-radius: 3px 0 0 3px;
+}
+.bbpm-pagination span.current {
+	margin-left: -4px;
+	border-left-color: #CECECE;
+}
+.bbpm-pagination {	
+	margin-top: 10px;
+}
+.message-snippet a.read {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+.bbpm div.notice {
+    display: block;
+    border: 1px solid #ddd;
+    background-color: #FBFBFB;
+    padding: 12px;
+    margin: 2px auto;
+    margin-bottom: 9px;
+	position:relative         
+}
+.bbpm div.notice.err {
+	background-color: #FFF3F3;
+}
+.bbpm div.notice > span {
+    float: right;
+    cursor: pointer;
+}
+.bbpm .entry-title {
+	display: block;
+}
+.bbpm .entry-title > a {
+	display: inline-block!important;
+}
