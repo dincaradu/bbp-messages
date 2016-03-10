@@ -41,3 +41,6 @@ coming up soon.
 
 = 1.0 =
 * Initial release.
+
+
+Please get the latest version here https://wordpress.org/plugins/bbp-messages/
