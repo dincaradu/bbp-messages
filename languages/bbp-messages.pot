@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the bbPress Messages package.
 msgid ""
 msgstr ""
-"Project-Id-Version: bbPress Messages 2.0-beta\n"
+"Project-Id-Version: bbPress Messages 2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bbp-messages\n"
-"POT-Creation-Date: 2017-03-01 15:23:54+00:00\n"
+"POT-Creation-Date: 2017-03-02 23:32:13+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,65 +12,73 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#. #-#-#-#-#  bbp-messages.pot (bbPress Messages 2.0-beta)  #-#-#-#-#
+#. #-#-#-#-#  bbp-messages.pot (bbPress Messages 2.0)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: BbpMessages.php:24 Inc/Admin/Screen.php:19
 msgid "bbPress Messages"
 msgstr ""
 
-#: CheckReady.php:66
+#: CheckReady.php:68
 msgid "Deactivating plugin.."
 msgstr ""
 
-#: Inc/Admin/Importers/bbPMessages.php:32
+#: Inc/Admin/Admin.php:119
+msgid "About"
+msgstr ""
+
+#: Inc/Admin/Admin.php:128 Inc/Admin/Admin.php:129
+msgid "Welcome to bbPress Messages"
+msgstr ""
+
+#: Inc/Admin/Importers/bbPMessages.php:30
 msgid ""
 "<strong>bbPress Messages v2:</strong> Import older messages now from legacy "
 "data table. Click <a href=\"%1$s\">here</a> to begin import or <a href=\"%2$s"
 "\">dismiss</a> this notice."
 msgstr ""
 
-#: Inc/Admin/Importers/bbPMessages.php:47
+#: Inc/Admin/Importers/bbPMessages.php:45
 msgid "bbPM importer"
 msgstr ""
 
-#: Inc/Admin/Importers/bbPMessages.php:70 Inc/Core/Init.php:132
-#: Inc/Core/Init.php:286 Inc/Core/Init.php:914
+#: Inc/Admin/Importers/bbPMessages.php:68 Inc/Core/Init.php:143
+#: Inc/Core/Init.php:297 Inc/Core/Init.php:939
 msgid "Error: Bad authentication!"
 msgstr ""
 
-#: Inc/Admin/Importers/bbPMessages.php:87
+#: Inc/Admin/Importers/bbPMessages.php:85
 msgid "Import older messages from legacy database table <code>%s</code>."
 msgstr ""
 
-#: Inc/Admin/Importers/bbPMessages.php:89
+#: Inc/Admin/Importers/bbPMessages.php:87
 msgid ""
 "If you have already imported messages using this tool, please dismiss this "
 "as it will not prevent duplicate records from inserting."
 msgstr ""
 
-#: Inc/Admin/Importers/bbPMessages.php:91
+#: Inc/Admin/Importers/bbPMessages.php:89
 msgid ""
 "Once you click import, the plugin will begin fetching messages from older "
 "database table and appending them to the new one."
 msgstr ""
 
-#: Inc/Admin/Importers/bbPMessages.php:93
+#: Inc/Admin/Importers/bbPMessages.php:91
 msgid ""
 "Please make sure not to cancel the import by pressing the escape key, or "
 "browser refresh or back button, until it is fully done."
 msgstr ""
 
-#: Inc/Admin/Importers/bbPMessages.php:95
+#: Inc/Admin/Importers/bbPMessages.php:93
 msgid ""
 "Please note that this may take a while, depending on how many messages we're "
 "importing, just in case you were confused."
 msgstr ""
 
-#: Inc/Admin/Importers/bbPMessages.php:97
+#: Inc/Admin/Importers/bbPMessages.php:95
 msgid "Delete <code>%s</code> legacy database table after import done"
 msgstr ""
 
-#: Inc/Admin/Importers/bbPMessages.php:101
+#: Inc/Admin/Importers/bbPMessages.php:99
 msgid "Begin Import"
 msgstr ""
 
@@ -190,86 +198,220 @@ msgstr ""
 msgid "Uses options API to store cache"
 msgstr ""
 
-#: Inc/Admin/Settings.php:129
-msgid "Auto-delete older messages"
+#: Inc/Admin/Settings.php:126
+msgid "Delete transients from database:"
+msgstr ""
+
+#: Inc/Admin/Settings.php:127
+msgctxt "delete transients"
+msgid "expired"
+msgstr ""
+
+#: Inc/Admin/Settings.php:128
+msgctxt "delete transients"
+msgid "all"
 msgstr ""
 
 #: Inc/Admin/Settings.php:135
-msgid "Purge messages older than %s days. (leave empty to disable)"
+msgid "Auto-delete older messages"
 msgstr ""
 
 #: Inc/Admin/Settings.php:141
+msgid "Purge messages older than %s days. (leave empty to disable)"
+msgstr ""
+
+#: Inc/Admin/Settings.php:147
 msgid ""
 "This setting allows you to purge older messages from the database. Choose "
 "how many days the message sent date is older than, and the weekly cleanup "
 "task will cleanup messages accordingly."
 msgstr ""
 
-#: Inc/Admin/Settings.php:147 Inc/Admin/Settings.php:150
+#: Inc/Admin/Settings.php:153 Inc/Admin/Settings.php:156
 #: templates/messages/single-settings.php:36
 msgid "Save Changes"
 msgstr ""
 
-#: Inc/Admin/Settings.php:209
+#: Inc/Admin/Settings.php:183
+msgid "Successfully deleted %d expired transients."
+msgstr ""
+
+#: Inc/Admin/Settings.php:188
+msgid "Successfully deleted %d transients."
+msgstr ""
+
+#: Inc/Admin/Settings.php:238
 msgid "Changes saved successfully!"
 msgstr ""
 
-#: Inc/Core/Init.php:142
+#: Inc/Core/Init.php:153
 msgid "Error occured processing your request."
 msgstr ""
 
-#: Inc/Core/Init.php:150
+#: Inc/Core/Init.php:161
 msgid "Error: Could not find a sender for this message!"
 msgstr ""
 
-#: Inc/Core/Init.php:166
+#: Inc/Core/Init.php:177
 msgid "Error: Could not find a chat ID for this message!"
 msgstr ""
 
-#: Inc/Core/Init.php:328 Inc/Core/Init.php:345
+#: Inc/Core/Init.php:339 Inc/Core/Init.php:356
 msgid "Error: Please select at least 1 message for this action!"
 msgstr ""
 
-#: Inc/Core/Init.php:339
+#: Inc/Core/Init.php:350
 msgid "Your messages are being deleted."
 msgstr ""
 
-#: Inc/Core/Init.php:366
+#: Inc/Core/Init.php:377
 msgid "Error: Invalid bulk action!"
 msgstr ""
 
-#: Inc/Core/Init.php:526 Inc/Core/Init.php:552
+#: Inc/Core/Init.php:392
+msgid "Messages"
+msgstr ""
+
+#: Inc/Core/Init.php:396
+msgid "Messages (%d)"
+msgstr ""
+
+#: Inc/Core/Init.php:544 Inc/Core/Init.php:570
 msgid "Invalid user! Please search and select a recipient below."
 msgstr ""
 
-#: Inc/Core/Init.php:579
+#: Inc/Core/Init.php:597
 msgid ""
 "Sorry, you cannot contact this user. Please search and select a recipient "
 "below."
 msgstr ""
 
-#: Inc/Core/Init.php:642
+#: Inc/Core/Init.php:660
 msgid "Error: Could not find chat!"
 msgstr ""
 
-#: Inc/Core/Init.php:904
+#: Inc/Core/Init.php:929
 msgid "Settings updated successfully!"
 msgstr ""
 
-#: Inc/Core/Init.php:925
+#: Inc/Core/Init.php:950
 msgid "Your chat is being deleted."
 msgstr ""
 
-#: Inc/Core/Init.php:940
+#: Inc/Core/Init.php:965
 msgid "Chat successfully marked unread."
 msgstr ""
 
-#: Inc/Core/Init.php:947
+#: Inc/Core/Init.php:972
 msgid "Error: could not mark chat unread."
 msgstr ""
 
-#: Inc/Core/Init.php:969
+#: Inc/Core/Init.php:994
 msgid "Sorry, you cannot contact this user!"
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:13
+msgid ""
+"Specify which user to get the unread messages count. (Optional, defaults to "
+"current user ID if logged-in.)"
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:14
+msgid ""
+"If true, we will count only how many chats have unread messages, instead of "
+"total unread messages. (Optional, defaults to false)"
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:16
+msgid "Get the unread messages/chats counts for a given user."
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:21
+msgid "Specify which user to return link to chat with. (required)"
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:22
+msgid ""
+"Specify which for which user to return the contact link. (Optional, defaults "
+"to current logged-in user)"
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:24
+msgid ""
+"Returns an URL to chat with the user ID specified. If no user is logged-in, "
+"it will return a login URL."
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:29
+msgid ""
+"Specify which user to return messages link. (Optional, defaults to current "
+"user if logged-in)"
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:31
+msgid ""
+"Get the messages URL of a given user, where they can browse their messages."
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:36
+msgid ""
+"Specify which user to return messages count. (Optional, defaults to current "
+"user if logged-in)"
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:37
+msgid ""
+"Count total messages in a single chat, specify the chat ID or the user "
+"contact."
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:39
+msgid "Counts users total messages for all chats or a single chat"
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:44
+msgid ""
+"Specify which user to return unread messages count. (Optional, defaults to "
+"current user if logged-in)"
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:45
+msgid ""
+"Count total unread messages in a single chat, specify the chat ID or the "
+"user contact."
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:47
+msgid "Counts users total unread messages for a single chat"
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:187
+msgid "Shortcodes"
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:199 Inc/Core/Shortcodes.php:238
+msgctxt "shortcodes admin"
+msgid "Shortcode"
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:200 Inc/Core/Shortcodes.php:239
+msgctxt "shortcodes admin"
+msgid "Usage"
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:201 Inc/Core/Shortcodes.php:240
+msgctxt "shortcodes admin"
+msgid "Attributes"
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:216 Inc/Core/Shortcodes.php:229
+msgid "NULL"
+msgstr ""
+
+#: Inc/Core/Shortcodes.php:245
+msgid ""
+"See <a href=\"https://codex.wordpress.org/Shortcode\">Shortcode</a> "
+"documentation if you need help with shortcodes."
 msgstr ""
 
 #: Inc/Core/functions.php:129
@@ -372,7 +514,7 @@ msgctxt "page title format"
 msgid "New Message"
 msgstr ""
 
-#: Inc/Core/functions.php:571
+#: Inc/Core/functions.php:586
 msgid ""
 "Dear %1$s,\n"
 "%2$s has recently sent you new messages on %3$s:\n"
@@ -389,47 +531,59 @@ msgid ""
 "screen."
 msgstr ""
 
-#: Inc/Lib/wp-messages/src/wp-messages.php:587
+#: Inc/Core/functions.php:681
+msgid "Send %s a Message"
+msgstr ""
+
+#: Inc/Core/functions.php:684
+msgid "Send a Message"
+msgstr ""
+
+#: Inc/Core/integrate.php:49
+msgid "Allow email notifications of new messages"
+msgstr ""
+
+#: Inc/Lib/wp-messages/src/wp-messages.php:572
 msgid "Chat ID missing: could not find or generate a chat ID."
 msgstr ""
 
-#: Inc/Lib/wp-messages/src/wp-messages.php:593
+#: Inc/Lib/wp-messages/src/wp-messages.php:578
 msgid "Error: Cannot send an empty message."
 msgstr ""
 
-#: Inc/Lib/wp-messages/src/wp-messages.php:607
+#: Inc/Lib/wp-messages/src/wp-messages.php:592
 msgid "Error: please set at least 1 recipient for this message."
 msgstr ""
 
-#: Inc/Lib/wp-messages/src/wp-messages.php:615
-#: Inc/Lib/wp-messages/src/wp-messages.php:622
+#: Inc/Lib/wp-messages/src/wp-messages.php:600
+#: Inc/Lib/wp-messages/src/wp-messages.php:607
 msgid "Error: Could not find a sender for this message."
 msgstr ""
 
-#: Inc/Lib/wp-messages/src/wp-messages.php:673
+#: Inc/Lib/wp-messages/src/wp-messages.php:658
 msgid "Error: Could not successfully insert this message into the database."
 msgstr ""
 
-#: Inc/Lib/wp-messages/src/wp-messages.php:1277
+#: Inc/Lib/wp-messages/src/wp-messages.php:1287
 msgid "WP Messages interval"
 msgstr ""
 
-#: Inc/Lib/wp-messages/src/wp-messages.php:1281
+#: Inc/Lib/wp-messages/src/wp-messages.php:1291
 msgid "Weekly"
 msgstr ""
 
-#: Inc/Lib/wp-messages/src/wp-messages.php:1914
-#: Inc/Lib/wp-messages/src/wp-messages.php:1987
-#: Inc/Lib/wp-messages/src/wp-messages.php:2144
-#: Inc/Lib/wp-messages/src/wp-messages.php:2215
+#: Inc/Lib/wp-messages/src/wp-messages.php:1936
+#: Inc/Lib/wp-messages/src/wp-messages.php:2009
+#: Inc/Lib/wp-messages/src/wp-messages.php:2166
+#: Inc/Lib/wp-messages/src/wp-messages.php:2237
 msgctxt "Pagination previous"
 msgid "&larr;"
 msgstr ""
 
-#: Inc/Lib/wp-messages/src/wp-messages.php:1915
-#: Inc/Lib/wp-messages/src/wp-messages.php:1988
-#: Inc/Lib/wp-messages/src/wp-messages.php:2145
-#: Inc/Lib/wp-messages/src/wp-messages.php:2216
+#: Inc/Lib/wp-messages/src/wp-messages.php:1937
+#: Inc/Lib/wp-messages/src/wp-messages.php:2010
+#: Inc/Lib/wp-messages/src/wp-messages.php:2167
+#: Inc/Lib/wp-messages/src/wp-messages.php:2238
 msgctxt "Pagination next"
 msgid "&rarr;"
 msgstr ""
@@ -594,7 +748,7 @@ msgid "https://github.com/elhardoum/bbp-messages"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "bbPress Messages 2.0"
+msgid "Simple yet powerful private messaging system tailored for bbPress."
 msgstr ""
 
 #. Author of the plugin/theme
