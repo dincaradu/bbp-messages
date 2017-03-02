@@ -1,0 +1,289 @@
+.bbpm {
+    overflow: hidden;
+}
+
+/** colors **/
+
+.bbpm a {
+    color: #7c7 !important;
+}
+.bbpm-items .bbpm-item .bbpm-details .bbpm-count {
+    background-color: #7c7;
+}
+
+.bbpm-items .bbpm-head,
+.bbpm-items .bbpm-item {
+    border-color: #ddd !important;
+}
+
+.bbpm textarea[name="message"] {
+    border: 1px solid #ddd;
+}
+
+.bbpm-items .bbpm-head .bbpm-left .bbpm-new,
+.bbpm-messages .bbpm-head .bbpm-left > a {
+    background: #efefef;
+}
+
+.bbpm .form-section .inline-error.error {
+    color: #dc3232;
+}
+.bbpm .form-section .inline-error.error {
+    color: #dc3232;
+}
+.bbpm .form-section .inline-error.success {
+    color: #46b450;
+}
+.bbpm .form-section .inline-error.warning,
+.bbpm .form-section .inline-error.notice {
+    color: #f1ef78;
+}
+.bbpm-errors .success {
+    border-color: #46b450;
+    background: rgba(70, 180, 80, 0.05);
+}
+.bbpm-errors .warning,
+.bbpm-errors .notice {
+    border-color: #f1ef78;
+    background: rgba(241, 239, 120, 0.13);
+}
+.bbpm-errors .error {
+    background: rgba(220, 50, 50, 0.04);
+}
+.bbpm-errors .error,
+.bbpm .form-section.has-errors input,
+.bbpm .form-section.has-errors textarea {
+    border-color: #dc3232;
+}
+
+/** inline items **/
+
+.bbpm-messages .bbpm-actions-cont .bbpm-actions select,
+.bbpm-messages .bbpm-actions-cont .bbpm-actions input[type="submit"],
+.bbpm-messages .bbpm-read-receipts > span,
+.bbpm-messages .bbpm-message a ,
+.bbpm-chats .bbpm-no-chats a,
+.bbpm-chat-settings #delete-chat,
+.bbpm-items .bbpm-item .bbpm-details .bbpm-excerpt > a,
+.bbpm-chats .bbpm-excerpt .bbpm-inline-tooltip,
+.bbpm-new .form-submit input,
+.bbpm-new .form-submit a,
+.bbpm-new .bbpm-results li img,
+.bbpm-messages .bbpm-head .bbpm-left > a,
+.bbpm-items .bbpm-foot .bbpm-pagi a,
+.bbpm-items .bbpm-foot .bbpm-pagi span {
+    display: inline-block !important;
+}
+
+/** css tweaks **/
+
+.bbpm-items .bbpm-head {
+    display: block !important;
+    overflow: hidden;
+    border-bottom: 1px solid;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+.bbpm-items .bbpm-head .bbpm-left {
+    float: left;
+}
+.bbpm-items .bbpm-head form {
+    float: right;
+    margin: 0;
+}
+.bbpm-items .bbpm-head form input {}
+
+.bbpm-items .bbpm-item {
+    display: block !important;
+    margin-bottom: 7px !important;
+    padding-bottom: 7px;
+    border-bottom: 1px solid;
+    overflow: hidden;
+}
+.bbpm-items .bbpm-chat.unread {
+    font-weight: 600;
+}
+.bbpm-items .bbpm-item .bbpm-icon,
+.bbpm-items .bbpm-item .bbpm-details {}
+.bbpm-items .bbpm-item .bbpm-icon {
+    float: left;
+    margin-right: 1em;
+}
+.bbpm-items .bbpm-item .bbpm-icon img {
+    cursor: pointer;
+}
+.bbpm-items .bbpm-item .bbpm-details {
+    display: flex !important;
+    justify-content: space-between;
+}
+.bbpm-items .bbpm-item .bbpm-details .bbpm-right,
+.bbpm-items .bbpm-item .bbpm-details .bbpm-left {
+    display: block !important;
+}
+.bbpm-items .bbpm-item .bbpm-details .bbpm-left {
+    white-space: normal;
+    -webkit-order: 1;
+    -webkit-flex: 0 1 auto;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    min-width:0;
+}
+.bbpm-items .bbpm-item .bbpm-details .bbpm-right {
+    position: relative;
+    -webkit-flex: 1;
+    -webkit-order:2;
+    -webkit-flex:1 0 auto;
+}
+.bbpm-items .bbpm-item .bbpm-details .bbpm-heading {
+    margin-bottom: 5px;
+    cursor: pointer;
+    margin-top: 0;
+}
+.bbpm-items .bbpm-item .bbpm-details .bbpm-excerpt {
+    cursor: pointer;
+    width: 100%;
+}
+.bbpm-items .bbpm-item .bbpm-details .bbpm-time {
+    text-align: right;
+    white-space: nowrap;
+}
+.bbpm-items .bbpm-item .bbpm-details .bbpm-count {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    padding: 1px 5px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+.bbpm-items .bbpm-foot .bbpm-pagi {
+    display: table !important;
+    margin: 0 auto;
+}
+
+.bbpm-items .bbpm-foot .bbpm-pagi a,
+.bbpm-items .bbpm-foot .bbpm-pagi span {
+    margin-right: 9px;
+}
+
+.bbpm-items .bbpm-head .bbpm-left .bbpm-new,
+.bbpm-messages .bbpm-head .bbpm-left > a {
+    padding: 1px 5px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    font-size: 90%;
+    margin: 1px;
+    transform: translateY(25%);
+}
+
+.bbpm-chats .bbpm-no-chats {
+    text-align: center;
+    padding-top: 1em;   
+}
+
+/** errors **/
+
+.bbpm-errors {
+    overflow: hidden;
+    margin-bottom: 1em !important;
+}
+.bbpm-errors li {
+    display: block !important;
+    list-style: none !important;
+    border: 1px solid #ddd;
+    margin: 5px 0 0 !important;
+    overflow: hidden;
+    padding: 1em;
+    clear: both;
+    position: relative;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+.bbpm .form-section {}
+.bbpm .form-section.has-errors {}
+.bbpm .form-section.has-errors input {
+    border: 1px solid;
+}
+.bbpm .form-section label {
+    display: block;
+}
+.bbpm .form-section .inline-error {
+    display: table;
+}
+
+/** end errors **/
+
+
+/** new message **/
+
+.bbpm-new .recipient-avatar {
+    overflow: hidden;
+}
+.bbpm-new .recipient-avatar img {
+    float: right;
+    border-radius: 3px; 
+    -webkit-border-radius: 3px; 
+}
+
+.bbpm-new .bbpm-results li {
+    padding: 0px 0px 5px;
+}
+.bbpm-new .bbpm-results li img {
+    vertical-align: middle;
+}
+
+/** single chat **/
+
+.bbpm-messages .bbpm-item {
+    margin: 1em 0 7px !important;
+}
+.bbpm-messages .bbpm-item .bbpm-details .bbpm-left {
+    min-width: 70%;
+}
+.bbpm-messages .bbpm-actions-cont {
+    overflow: hidden;
+}
+.bbpm-messages .bbpm-actions-cont .bbpm-actions {
+    float: right;
+}
+.bbpm-messages .bbpm-actions-cont .bbpm-mark-unread {
+    float: left;
+}
+.bbpm-messages .bbpm-read-receipts {
+    margin-top: 10px;
+    text-align: center;
+}
+.bbpm-messages .bbpm-read-receipts > span img {
+    vertical-align: middle;
+}
+.bbpm-messages .bbpm-head .bbpm-left {
+    margin-bottom: 7px;
+    white-space: nowrap;
+}
+.bbpm-messages .bbpm-head .bbpm-left img {
+    float: left;
+    margin-right: 1em;
+}
+.bbpm-messages .bbpm-head .bbpm-left .bbpm-heading {
+    display: inline-block !important;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+/** chat settings **/
+
+.bbpm-chat-settings .delete-chat-form {
+    display: none !important;
+}
+
+.bbpm-chat-settings label {
+    display: block !important;
+}
+
+.bbpm-chat-settings input[name="subscribe"] {
+    display: inline-block!important;
+}
+
+.bbpm-items .bbpm-right input[type="checkbox"] {
+    position: absolute; bottom: 0; right: 0;
+}
