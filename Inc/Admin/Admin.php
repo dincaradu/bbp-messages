@@ -116,6 +116,8 @@ class Admin
             }
         }
 
+        $l[] = '<a href="index.php?page=bbpm-about">' . __('About', BBP_MESSAGES_DOMAIN) . '</a>';
+
         return $l;
     }
 
@@ -135,9 +137,25 @@ class Admin
 
     public function welcomeDisplay()
     {
+        ob_start();
+
         bbpm_load_template(sprintf(
             'admin/welcome-%s.html',
             BBP_MESSAGES_VER
         ));
+
+        $welcome = ob_get_clean();
+
+        echo str_replace(
+            array(
+                '{{SETTINGS_URL}}',
+                '{{VERSION}}'
+            ),
+            array(
+                $this->screen->tabs['settings']['link'],
+                BBP_MESSAGES_VER
+            ),
+            $welcome
+        );
     }
 }
