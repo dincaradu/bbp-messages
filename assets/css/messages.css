@@ -275,13 +275,15 @@
 .bbpm-chat-settings .delete-chat-form {
     display: none !important;
 }
-
 .bbpm-chat-settings label {
     display: block !important;
 }
-
 .bbpm-chat-settings input[name="subscribe"] {
     display: inline-block!important;
+}
+.bbpm-chat-settings .bbpm-cancel,
+.bbpm-chat-settings input[type="submit"] {
+    display: inline-block !important;
 }
 
 .bbpm-items .bbpm-right input[type="checkbox"] {

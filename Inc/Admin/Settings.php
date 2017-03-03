@@ -95,6 +95,8 @@ class Settings
                         </div>
                     </div>
 
+                    <?php do_action('bbpm_admin_settings_before_advanced'); ?>
+
                     <div class="postbox">
                         <h3 class="hndle">
                             <span>
@@ -148,6 +150,8 @@ class Settings
 
                         </div>
                     </div>
+
+                    <?php do_action('bbpm_admin_settings'); ?>
 
                     <div class="postbox">
                         <h3 class="hndle"><?php _e('Save Changes', BBP_MESSAGES_DOMAIN); ?></h3>
@@ -236,5 +240,7 @@ class Settings
         $bbpm_options = wp_parse_args($s, bbpm_options_default());
         // print feedback
         $this->admin()->feedback(__('Changes saved successfully!', BBP_MESSAGES_DOMAIN));
+        // trigger hook
+        do_action('bbpm_update_admin_settings');
     }
 }

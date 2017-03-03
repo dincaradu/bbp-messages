@@ -669,7 +669,7 @@ function bbpm_prepare_contact_button($user_id) {
                 $btn['unread_count'] = $m->getChatUnreadCount($chat_id);
             } else {
                 global $bbpm_bases;
-                $btn['link'] = bbpm_messages_url(sprintf('%s/%d/', $bbpm_bases['new'], $user->ID));
+                $btn['link'] = bbpm_messages_url(sprintf('%s/%d/', $bbpm_bases['with'], $user->ID), $m->current_user);
             }
         } else {
             $btn['link'] = apply_filters(

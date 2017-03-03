@@ -135,14 +135,16 @@ class Admin
         return $this;
     }
 
+    public function welcome2P0()
+    {
+        return 'admin/welcome-2.0.html';
+    }
+
     public function welcomeDisplay()
     {
         ob_start();
 
-        bbpm_load_template(sprintf(
-            'admin/welcome-%s.html',
-            BBP_MESSAGES_VER
-        ));
+        bbpm_load_template('admin/welcome-2.0.html');
 
         $welcome = ob_get_clean();
 

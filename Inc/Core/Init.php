@@ -389,6 +389,8 @@ class Init
             );
         }
 
+        global $bbpm_bases;
+
         $text = __('Messages', BBP_MESSAGES_DOMAIN);
         $uc = bbpm_messages()->getChatsUnreadCount();
 
@@ -397,14 +399,15 @@ class Init
         }
 
         $this->profile_tab = \bbPressProfileTabs::create(array(
-            'slug' => 'messages',
+            'slug' => $bbpm_bases['messages_base'],
             'menu-item-text' => $text,
-            'menu-item-position' => 2
+            'menu-item-position' => 2,
+            'query_var' => 'messages'
         ))->init();
     }
 
     public function rewriteRules()
-    {
+    {        
         $rules = $this->rewrite_rules;
         $bases = $this->bases;
         $bases['bbp_user_slug'] = bbp_get_user_slug();

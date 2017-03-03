@@ -34,7 +34,7 @@
             <input type="hidden" name="action" value="update_settings" />
             <?php wp_nonce_field("single_actions_{$bbpm_chat->chat_id}", 'bbpm_nonce'); ?>
             <input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_attr_e('Save Changes', BBP_MESSAGES_DOMAIN); ?>" />
-            <a href="<?php echo bbpm_messages_url($bbpm_chat->chat_id); ?>"><?php _e('cancel', BBP_MESSAGES_DOMAIN); ?></a>
+            <a href="<?php echo bbpm_messages_url($bbpm_chat->chat_id); ?>" class="bbpm-cancel"><?php _e('cancel', BBP_MESSAGES_DOMAIN); ?></a>
         </p>
 
     </form>
