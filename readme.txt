@@ -1,9 +1,9 @@
-=== bbPress Messages - Forum Users Private Messages ===
+=== bbPress Messages ===
 Contributors: elhardoum
 Tags: messages, bbPress, forums, private messages, buddypress, contact, widget, embed, conversations, notifications, email, child themes
 Requires at least: 3.0.1
 Tested up to: 4.7.2
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Author URI: http://samelh.com/

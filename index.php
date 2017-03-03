@@ -7,6 +7,7 @@ Author: Samuel Elh
 Version: 2.0.3
 Author URI: https://samelh.com
 Text Domain: bbp-messages
+Donate link: https://paypal.me/samelh
 */
 
 if ( !defined('BBP_MESSAGES_FILE') ) {

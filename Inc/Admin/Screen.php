@@ -66,8 +66,15 @@ class Screen
             }
         }
 
-        if ($this->current_tab_id && !$this->current_tab) {
-            return bbpm_redirect(esc_url('?page=bbpress-messages'), 1);
+        if ( empty($_GET['page']) || 'bbpress-messages' !== $_GET['page'] )
+            return;
+
+        global $pagenow;
+
+        if ( 'options-general.php' === $pagenow || ('settings.php' === $pagenow && is_network_admin()) ) {
+            if ($this->current_tab_id && !$this->current_tab) {
+                return bbpm_redirect(esc_url('?page=bbpress-messages'), 1);
+            }
         }
     }
 
