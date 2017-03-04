@@ -1,0 +1,38 @@
+<div class="wrap about-wrap">
+    <div style="border-bottom: 1px solid #ddd;padding-bottom:2em">
+        <h1>Welcome to bbPress Messages {{VERSION}}!</h1>
+
+        <p class="about-text">Thank you for updating to {{VERSION}}! We took some time to rewrite the plugin for more flexibility and features, find out more information below.</p>
+
+        <div class="wp-badge" style="background:url('https://ps.w.org/bbp-messages/assets/icon-128x128.png');background-size:contain;width:150px">Version {{VERSION}}</div>
+    </div>
+
+    <h3>What's New?</h3>
+
+    <div class="changelog" style="border-bottom: 1px solid #ddd;padding-bottom:0.5em">
+        <h4>Fully Optimized</h4>
+        <p>Now bbPress Messages loads faster due to optimization and messages caching.</p>
+
+        <h4>Background Schedules</h4>
+        <p>For better experience and load time, now the tasks are processed in the background. Tasks that would take some time to finish such as email notifications, after send events, cleanup schedules and others.</p>
+
+        <h4>Translation ready</h4>
+        <p>Now you can use the languages files to <a href="https://codex.wordpress.org/I18n_for_WordPress_Developers">translate</a> bbPress Messages to your language. You can also contribute your translations and <a href="https://translate.wordpress.org/projects/wp-plugins/bbp-messages">help translate this plugin</a>.</p>
+
+        <h4>Shortcodes</h4>
+        <p>We've added couple shortcodes and rewrote older shortcodes, you can find out about shortcodes in the shortcodes tab in the settings page.</p>
+
+        <h4>Widgets</h4>
+        <p>We've redesigned the widgets for 2.0! Navigate to your dashboard and search for bbPM widgets now.</p>
+
+        <p>Other than that, bbPress Messages {{VERSION}} is easy to extend, supports multisite installations, and we will be working on some free addons to extend its features and improve more. Please consult the project Github page <a href="https://github.com/elhardoum/bbp-messages">https://github.com/elhardoum/bbp-messages</a> to report a bug, contribute to the project or make suggestions.</p>
+
+        <p>If this is the first time you update, you should be migrating your older messages from the legacy database table to the new one. This could be done using the import tab in settings.</p>
+    </div>
+
+    <a href="{{SETTINGS_URL}}"><strong>Go to Settings</strong></a>
+</div>
+
+<script type="text/javascript">
+    var ttl=function(a){document.title=a+" "+document.title};try{ttl("Welcome to bbPress Messages")}catch(a){}
+</script>

@@ -132,7 +132,18 @@ class Screen
                 return $html;
             }, $content);
             // print
-            print $content;
+            if ( apply_filters('bbpm_admin_tab_with_sidebar', true, $this->current_tab['name']) ) {
+                $this->css();
+                print '<div class="bbpm-two">';
+                printf ('<div class="bbpm-left">%s</div>', $content);
+                print '<div class="bbpm-right">';
+                $this->sidebar();
+                print '</div>';
+                print '</div>';
+            } else {
+                print $content;
+            }
+
         } else {
             // print an error message
             $this->admin()->feedback(
@@ -167,5 +178,48 @@ class Screen
         if ( !empty($this->current_tab['update_callback']) && is_callable($this->current_tab['update_callback']) ) {
             call_user_func($this->current_tab['update_callback']);
         }
+    }
+
+    public function css()
+    {
+        ?>
+        <style type="text/css">
+            @media (min-width: 600px) {
+                .bbpm-two {
+                    display: flex;
+                }
+                .bbpm-two .bbpm-right {
+                    margin-right: 0;
+                    padding-left: 2em;
+                    max-width: 35%;
+                }
+            }
+        </style>
+        <?php
+
+        print PHP_EOL;
+    }
+
+    public function sidebar()
+    {
+        ?>
+
+        <p>Thank you for using bbPress Messages plugin! Did you like the new update? Don't hesitate to leave us a rating and an optional review! That helps. <a target="_blank" href="https://wordpress.org/support/plugin/bbp-messages/reviews/?rate=5#new-post">&star;&star;&star;&star;&star; &rarr;</a></p>
+
+        <strong>Support</strong>
+
+        <p>bbPress Messages support is offered through wp-org support forums. <a target="_blank" href="https://wordpress.org/support/plugin/bbp-messages">Find Support</a></p>
+
+        <strong>Help us out</strong>
+
+        <p>Whether you found a bug and wanted to report it, or you had some ideas to improve this plugin, or features, or wanted to contribute to the core, please consult the Github repository for this plugin at <a target="_blank" href="https://github.com/elhardoum/bbp-messages">https://github.com/elhardoum/bbp-messages</a>. PRs are welcome!</p>
+
+        <p>You can also contribute your translations and <a href="https://translate.wordpress.org/projects/wp-plugins/bbp-messages">help translate this plugin</a> to your language!</p>
+
+        <strong>Stay tuned</strong>
+
+        <p>Currently, we're working on preparing some free and premium addons for bbPress Messages 2.0, and tutorials on how to customize it to fit your needs. <a href="https://go.samelh.com/newsletter/" target="_blank">Sign up for the newsletter</a> to get notified!</p>
+
+        <?php
     }
 }

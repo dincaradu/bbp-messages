@@ -2,7 +2,7 @@
 
 class Init
 {
-    public $profile_tab, $rewrite_rules, $bases, $loop_chats;
+    public $profile_tab, $rewrite_rules, $bases, $loop_chats, $widgets;
 
     public function __construct()
     {
@@ -34,6 +34,15 @@ class Init
             'current_index' => -1,
             'current_chat' => null
         );
+
+        $this->widgets = array(
+            '\BBP_MESSAGES\Inc\Core\Widgets\Welcome',
+            '\BBP_MESSAGES\Inc\Core\Widgets\NewMessage',
+            '\BBP_MESSAGES\Inc\Core\Widgets\MyChats',
+            '\BBP_MESSAGES\Inc\Core\Widgets\MyMessages',
+            '\BBP_MESSAGES\Inc\Core\Widgets\Search',
+            '\BBP_MESSAGES\Inc\Core\Widgets\MyContacts'
+        );
     }
 
     public function init()
@@ -52,6 +61,8 @@ class Init
         add_action('init', array($this, 'rewriteRules'));
         // start buffer
         add_action('init', array($this, 'obStart'));
+        // register scripts
+        add_action('wp_enqueue_scripts', array($this, 'registerScripts'));
         // query vars
         add_filter('query_vars', array($this, 'queryVars'));
         // parse query
@@ -107,6 +118,13 @@ class Init
         // load integrations
         $this->loadIntegrate();
 
+        // initiate widgets
+        add_action('widgets_init', array($this, 'widgetsInit'));
+        // enqueue main style.css for widgets
+        add_action('bbpm_widget_start_output', array($this, 'enqueueStyleCSS'));
+        // widget errors
+        add_action('bbpm_widget_new_message_start_output', array($this, 'parseNewMessageWidgetErrors'));
+
         do_action('bbpm_loaded', $this);
     }
 
@@ -137,7 +155,7 @@ class Init
             ))
         );
 
-        if ( !bbpm_verify_nonce("send_message") ) {
+        if ( !bbpm_verify_nonce('send_message') ) {
             return bbpm_redirect($redirect, 1, 0)->withNotice(array(
                 'nonce',
                 __('Error: Bad authentication!', BBP_MESSAGES_DOMAIN),
@@ -170,6 +188,31 @@ class Init
                 $chat_id = sanitize_text_field($_POST['chat_id']);
             }
         }
+
+        if ( !$chat_id && !empty($_POST['recipient']) ) {
+            $_recipient = intval($_POST['recipient']);
+
+            if ( !get_userdata($_recipient) ) {
+                return bbpm_redirect($redirect, 1, 0)->withNotice(array(
+                    'recipient',
+                    __('Error: Invalid recipient specified!', BBP_MESSAGES_DOMAIN),
+                    'error'
+                ));
+            } else {
+                $chat_id = $Messages->getPrivateSharedChat($Messages->current_user, $_recipient);
+
+                if ( !$chat_id ) {
+                    do_action('bbpm_new_pre_generate_chat_id', $_recipient);
+
+                    if ( !bbpm_has_errors() ) {
+                        $chat_id = $Messages->set('chat_id', null)->getOrGenerateChatId();
+                        $Messages->set('chat_id', $chat_id)->addChatRecipient(array($Messages->current_user, $_recipient));
+                    }
+                }
+            }
+        }
+
+        $chat_id = apply_filters('bbpm_send_get_chat_id', $chat_id);
 
         if ( !trim($chat_id) ) {
             return bbpm_redirect($redirect, 1, 0)->withNotice(array(
@@ -802,25 +845,36 @@ class Init
         print '</div>';
     }
 
+    public function registerScripts()
+    {
+        $css = apply_filters('bbpm_assets-style.css', BBP_MESSAGES_URL . 'assets/css/style.css');
+
+        if ( $css )
+            wp_register_style('bbpm-style', $css, array(), BBP_MESSAGES_VER);
+
+        $css = apply_filters('bbpm_assets-messages.css', BBP_MESSAGES_URL . 'assets/css/messages.css');
+
+        if ( $css )
+            wp_register_style('bbpm-messages', $css, array(), BBP_MESSAGES_VER);
+
+        $js = apply_filters('bbpm_assets-messages.js', BBP_MESSAGES_URL . 'assets/js/messages.js');
+        
+        if ( $css )
+            wp_register_script('bbpm-messages', $js, array(), BBP_MESSAGES_VER);        
+    }
+
     public function enqueueScripts()
     {
         if ( !bbpm_is_messages() )
             return;
-
-        $css = apply_filters('bbpm_assets-messages.css', BBP_MESSAGES_URL . 'assets/css/messages.css');
         
-        if ( $css )
-            wp_enqueue_style('bbpm-messages', $css, BBP_MESSAGES_VER);
+        wp_enqueue_style('bbpm-messages');
 
         if ( bbpm_is_chats() || bbpm_is_chat_settings() ) {
-            $js = apply_filters('bbpm_assets-messages.js', BBP_MESSAGES_URL . 'assets/js/messages.js');
-
-            if ( $js ) {
-                wp_enqueue_script('bbpm-messages', $js, array(), BBP_MESSAGES_VER);
-                wp_localize_script('bbpm-messages', 'BBP_MESSAGES', array(
-                    'messages_base' => bbpm_messages_url()
-                ));
-            }
+            wp_enqueue_script('bbpm-messages');
+            wp_localize_script('bbpm-messages', 'BBP_MESSAGES', array(
+                'messages_base' => bbpm_messages_url()
+            ));
         }
     }
 
@@ -1008,5 +1062,32 @@ class Init
         require_once BBP_MESSAGES_DIR . (
             'Inc/Core/integrate.php'
         );
+    }
+
+    public function widgetsInit()
+    {
+        if ( empty($this->widgets) )
+            return;
+
+        foreach ( $this->widgets as $widget ) {
+            register_widget($widget);
+        }
+    }
+
+    public function parseNewMessageWidgetErrors()
+    {
+        if ( !did_action('bbpm_template_head', array($this, 'parseTempalteErrors')) ) {
+            Redirect::parseNotices('bbpm_errors', 'bbpm_add_error');
+            // print'em
+            bbpm_template_errors(array(
+                'recipient',
+                'message'
+            ));
+        }
+    }
+
+    public function enqueueStyleCSS()
+    {
+        return wp_enqueue_style('bbpm-style');
     }
 }

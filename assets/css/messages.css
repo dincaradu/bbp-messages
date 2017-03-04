@@ -25,37 +25,6 @@
     background: #efefef;
 }
 
-.bbpm .form-section .inline-error.error {
-    color: #dc3232;
-}
-.bbpm .form-section .inline-error.error {
-    color: #dc3232;
-}
-.bbpm .form-section .inline-error.success {
-    color: #46b450;
-}
-.bbpm .form-section .inline-error.warning,
-.bbpm .form-section .inline-error.notice {
-    color: #f1ef78;
-}
-.bbpm-errors .success {
-    border-color: #46b450;
-    background: rgba(70, 180, 80, 0.05);
-}
-.bbpm-errors .warning,
-.bbpm-errors .notice {
-    border-color: #f1ef78;
-    background: rgba(241, 239, 120, 0.13);
-}
-.bbpm-errors .error {
-    background: rgba(220, 50, 50, 0.04);
-}
-.bbpm-errors .error,
-.bbpm .form-section.has-errors input,
-.bbpm .form-section.has-errors textarea {
-    border-color: #dc3232;
-}
-
 /** inline items **/
 
 .bbpm-messages .bbpm-actions-cont .bbpm-actions select,
@@ -180,39 +149,6 @@
     text-align: center;
     padding-top: 1em;   
 }
-
-/** errors **/
-
-.bbpm-errors {
-    overflow: hidden;
-    margin-bottom: 1em !important;
-}
-.bbpm-errors li {
-    display: block !important;
-    list-style: none !important;
-    border: 1px solid #ddd;
-    margin: 5px 0 0 !important;
-    overflow: hidden;
-    padding: 1em;
-    clear: both;
-    position: relative;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-}
-.bbpm .form-section {}
-.bbpm .form-section.has-errors {}
-.bbpm .form-section.has-errors input {
-    border: 1px solid;
-}
-.bbpm .form-section label {
-    display: block;
-}
-.bbpm .form-section .inline-error {
-    display: table;
-}
-
-/** end errors **/
-
 
 /** new message **/
 

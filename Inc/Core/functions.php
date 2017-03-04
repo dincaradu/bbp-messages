@@ -285,8 +285,16 @@ function bbpm_old( $name, $return=null, $default=null, $method='request' ) {
 }
 endif;
 
-function bbpm_message_field($autosave='', $chat_id=null) {
-    return '<textarea name="message" id="message" class="'.(bbpm_has_errors('message')?'has-errors':'').'" required="required">' . $autosave . '</textarea>';
+function bbpm_message_field($autosave='') {
+    $html = '<textarea name="message" id="message" class="'.(bbpm_has_errors('message')?'has-errors':'').'" required="required" placeholder="' . esc_attr__('Type a message..', BBP_MESSAGES_DOMAIN) . '">' . $autosave . '</textarea>';
+
+    if ( bbpm_has_errors('message') ) {
+        ob_start();
+        bbpm_print_error('message');
+        $html .= ob_get_clean();
+    }
+
+    return apply_filters('bbpm_message_field', $html, $autosave);
 }
 
 function bbpm_can_contact($user_id, $current_user=null) { 

@@ -1728,6 +1728,7 @@ class WP_Messages
             return $this;
 
         #todo: cleanup old no-longer recipients
+        #todo: unreadChats clean
 
         $unread = $this->getChatUnreads($chat_id);
         $i = array_search($user_id, $unread);
@@ -2016,7 +2017,7 @@ class WP_Messages
         return $this;
     }
 
-    /*TODO: private*/ function getInboxIds($chat_id=null, $user_id=null)
+    function getInboxIds($chat_id=null, $user_id=null)
     {
         if ( !$chat_id && $this->chat_id ) {
             $chat_id = $this->chat_id;

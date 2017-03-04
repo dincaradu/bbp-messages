@@ -144,7 +144,7 @@ class Admin
     {
         ob_start();
 
-        bbpm_load_template('admin/welcome-2.0.html');
+        bbpm_load_template('admin/welcome-2.0.4.html');
 
         $welcome = ob_get_clean();
 
