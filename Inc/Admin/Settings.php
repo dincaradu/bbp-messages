@@ -6,6 +6,15 @@ class Settings
 
     public function init()
     {
+        // bbpm_admin_screen()->registerTab(array(
+        //     'settings' => array(
+        //         'id' => null,
+        //         'name' => __('Settings', BBP_MESSAGES_DOMAIN),
+        //         'content_callback' => array($this, 'screen'),
+        //         'update_callback' => array($this, 'update')
+        //     )
+        // ))->prepare();
+
         add_filter('bbpm_admin_tabs', array($this, 'tab'), 0);
         add_filter('bbpm_settings_email_body_editor_value', 'wp_unslash');
         add_filter('bbpm_settings_email_subject_editor_value', 'wp_unslash');

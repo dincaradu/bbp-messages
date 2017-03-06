@@ -693,3 +693,7 @@ function bbpm_prepare_contact_button($user_id) {
 
     return apply_filters('bbpm_prepare_contact_button', $btn, $user_id);
 }
+
+function bbpm_admin_tabs() {
+    return apply_filters('bbpm_admin_tabs', array());
+}

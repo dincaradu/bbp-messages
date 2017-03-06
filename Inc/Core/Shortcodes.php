@@ -57,6 +57,13 @@ class Shortcodes
 
         if ( is_admin() ) {
             add_filter('bbpm_admin_tabs', array($this, 'adminTab'));
+            // bbpm_admin_screen()->registerTab(array(
+            //     'shortcodes' => array(
+            //         'id' => 'shortcodes',
+            //         'name' => __('Shortcodes', BBP_MESSAGES_DOMAIN),
+            //         'content_callback' => array($this, 'adminScreen')
+            //     )
+            // ))->prepare();
         }
     }
 

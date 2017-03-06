@@ -23,16 +23,16 @@ class bbPMessages
 
     public function init($network_active)
     {
-        add_filter('bbpm_admin_tabs', array($this, 'tab'), 999);
+        add_filter('bbpm_admin_tabs', array($this, 'tab'));
         add_filter('bbpm_bbpm_importer_message_str', array($this, 'fixLtGt'));
 
         $this->admin()->feedback(sprintf(
             __('<strong>bbPress Messages v2:</strong> Import older messages now from legacy data table. Click <a href="%1$s">here</a> to begin import or <a href="%2$s">dismiss</a> this notice.', BBP_MESSAGES_DOMAIN),
-            ($network_active ? network_admin_url('settings') : admin_url('options-general')) . (
-                '.php?page=bbpress-messages&tab=bbpm-import'
+            ($network_active ? network_admin_url('admin.php') : admin_url('admin.php.php')) . (
+                '?page=bbpm-bbpm-import'
             ),
-            ($network_active ? network_admin_url('settings') : admin_url('options-general')) . (
-                '.php?page=bbpress-messages&tab=bbpm-import&bbpm-dismiss=1'
+            ($network_active ? network_admin_url('admin.php') : admin_url('admin.php.php')) . (
+                '?page=bbpm-bbpm-import&bbpm-dismiss=1'
             )
         ), true);
     }

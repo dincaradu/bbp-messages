@@ -31,22 +31,35 @@ class Admin
         add_action($prefix . 'admin_menu', array($this->screen, 'setupPages'));
         add_action($prefix . 'admin_menu', array($this->screen, 'prepare'));
 
-        if ( 'bbpress-messages' === $this->get_page ) {
-            global $pagenow;
-            switch ($pagenow) {
-                case 'options-general.php':
-                    if ( 'network_' !== $prefix ) {
-                        add_action($prefix . 'admin_menu', array($this->screen, 'maybeUpdate'));
-                    }
-                    break;
-
-                case 'settings.php':
-                    if ( 'network_' === $prefix ) {
-                        add_action($prefix . 'admin_menu', array($this->screen, 'maybeUpdate'));
-                    }
-                    break;
-            }
+    
+        if ( 'bbpm-' === substr($this->get_page, 0, 5) ) {
+            $current_tab_id = substr($this->get_page, 5);
+        } else if ( 'bbpress-messages' === $this->get_page ) {
+            $current_tab_id = null;
+        } else {
+            $keep_quite = true;
         }
+
+        if ( !isset($keep_quite) ) {
+            add_action($prefix . 'admin_menu', array($this->screen, 'maybeUpdate'));
+        }
+
+        // if ( 'bbpress-messages' === $this->get_page ) {
+        //     global $pagenow;
+        //     switch ($pagenow) {
+        //         case 'options-general.php':
+        //             if ( 'network_' !== $prefix ) {
+        //                 add_action($prefix . 'admin_menu', array($this->screen, 'maybeUpdate'));
+        //             }
+        //             break;
+
+        //         case 'settings.php':
+        //             if ( 'network_' === $prefix ) {
+        //                 add_action($prefix . 'admin_menu', array($this->screen, 'maybeUpdate'));
+        //             }
+        //             break;
+        //     }
+        // }
 
         if ( 'network_' !== $prefix ) {
             add_filter('plugin_action_links_' . BBP_MESSAGES_BASE, array($this, 'actionLinks'));        
@@ -54,7 +67,11 @@ class Admin
             add_filter('network_admin_plugin_action_links_' . BBP_MESSAGES_BASE, array($this, 'actionLinks'));
         }
 
+        add_filter('plugin_row_meta', array($this, 'rowMetaLinks'), 10, 2);
+
         add_action($prefix . 'admin_menu', array($this, 'welcome'));
+
+        do_action('bbpm_admin_loaded', $this);
 
         return $this;
     }
@@ -108,15 +125,33 @@ class Admin
 
     public function actionLinks($l)
     {
-        $tabs = $this->screen->tabs;
+        return array_merge(array(
+            sprintf('<a href="%s">%s</a>', $this->screen->getLink(null), __('Settings', BBP_MESSAGES_DOMAIN)),
+            '<a href="index.php?page=bbpm-about">' . __('About', BBP_MESSAGES_DOMAIN) . '</a>'
+        ), $l);
+    }
+
+    public function rowMetaLinks($l, $f)
+    {
+        if ( $f !== BBP_MESSAGES_BASE )
+            return $l;
+
+        $tabs = bbpm_admin_tabs();
 
         if ( $tabs ) {
             foreach ( $tabs as $t ) {
-                $l[] = sprintf('<a href="%s">%s</a>', $t['link'], $t['name']);
+                switch ( $t['id'] ) {
+                    case '':
+                        continue 2;
+                        break;
+                }
+
+                $l[] = sprintf('<a href="%s">%s</a>', $this->screen->getLink($t), $t['name']);
             }
         }
 
-        $l[] = '<a href="index.php?page=bbpm-about">' . __('About', BBP_MESSAGES_DOMAIN) . '</a>';
+        // others
+        // $l[] = '<a href="index.php?page=bbpm-about">' . __('About', BBP_MESSAGES_DOMAIN) . '</a>';
 
         return $l;
     }
@@ -126,7 +161,7 @@ class Admin
         add_submenu_page(
             null,
             __('Welcome to bbPress Messages', BBP_MESSAGES_DOMAIN),
-            __('Welcome to bbPress Messages'),
+            __('Welcome to bbPress Messages', BBP_MESSAGES_DOMAIN),
             'manage_options',
             'bbpm-about',
             array($this, 'welcomeDisplay')

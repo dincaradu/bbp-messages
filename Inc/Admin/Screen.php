@@ -7,21 +7,40 @@ class Screen
     public $current_tab;
     public $admin;
 
-    function __construct()
-    {
-        $this->tabs = array();
-    }
-
     public function setupPages()
     {
-        add_submenu_page(
-            bbp_messages()->isNetworkActive() ? 'settings.php' : 'options-general.php',
+        add_menu_page(
             __('bbPress Messages', BBP_MESSAGES_DOMAIN),
-            BBP_MESSAGES_NAME,
+            __('bbP Messages', BBP_MESSAGES_DOMAIN),
             'manage_options',
             'bbpress-messages',
-            array($this, 'screen')
+            array($this, 'screen'),
+            'dashicons-email-alt'
         );
+
+        add_submenu_page(
+            'bbpress-messages',
+            sprintf(__('%s &lsaquo; bbPress Messages', BBP_MESSAGES_DOMAIN), __('Settings', BBP_MESSAGES_DOMAIN)),
+            __('Settings', BBP_MESSAGES_DOMAIN),
+            'manage_options',
+            'bbpress-messages'
+        );
+
+        $tabs = bbpm_admin_tabs();
+
+        foreach ( $tabs as $tab ) {
+            if ( !trim($tab['id']) )
+                continue;
+
+            add_submenu_page(
+                'bbpress-messages',
+                sprintf(__('%s &lsaquo; bbPress Messages', BBP_MESSAGES_DOMAIN), $tab['name']),
+                $tab['name'],
+                'manage_options',
+                'bbpm-'.$tab['id'],
+                array($this, 'screen')
+            );
+        }
 
         return $this;
     }
@@ -35,71 +54,110 @@ class Screen
         return $this->admin;
     }
 
+    public function getLink($tab)
+    {
+        if ( is_string($tab) ) {
+            $id = $tab;
+        } else if (is_array($tab) && isset($tab['id'])) {
+            $id = $tab['id'];
+        } else {
+            $id = null;
+        }
+
+        $link = bbp_messages()->isNetworkActive() ? (
+            network_admin_url('admin.php?page=')
+        ) : (
+            admin_url('admin.php?page=')
+        );
+
+        if ( trim($id) ) {
+            $link .= 'bbpm-' . $id;
+        } else {
+            $link .= 'bbpress-messages';
+        }
+
+        return esc_url($link);
+    }
+
     public function prepare()
     {
-        $this->tabs = apply_filters('bbpm_admin_tabs', array());
+        $tabs = bbpm_admin_tabs();
 
-        if ( !$this->tabs || !is_array($this->tabs) ) {
+        if ( !$tabs || !is_array($tabs) ) {
             wp_die(__('No tabs loaded yet.', BBP_MESSAGES_DOMAIN));
         }
 
-        $plugin = bbp_messages();
+        $get_page = $this->admin()->get_page;
+        $this->current_tab_id = $get_page;
 
-        foreach ( (array) $this->tabs as $i=>$tab ) {
-            $this->tabs[$i]['link'] = $plugin->isNetworkActive() ? (
-                network_admin_url('settings.php?page=bbpress-messages')
-            ) : (
-                admin_url('options-general.php?page=bbpress-messages')
-            );
-
-            if ( trim($tab['id']) ) {
-                $this->tabs[$i]['link'] = add_query_arg('tab', $tab['id'], $this->tabs[$i]['link']);
-            }
+        if ( 'bbpm-' === substr($this->current_tab_id, 0, 5) ) {
+            $this->current_tab_id = substr($this->current_tab_id, 5);
+        } else if ( 'bbpress-messages' === $this->current_tab_id ) {
+            $this->current_tab_id = null;
         }
 
-        $this->current_tab_id = isset($_GET['tab']) ? esc_attr($_GET['tab']) : null;
-
-        foreach ( (array) $this->tabs as $tab ) {
+        foreach ( (array) $tabs as $tab ) {
             if ( $tab['id'] == $this->current_tab_id ) {
                 $this->current_tab = $tab;
                 break;
             }
         }
+    }
 
-        if ( empty($_GET['page']) || 'bbpress-messages' !== $_GET['page'] )
+    public function isCurrentTab($tab)
+    {
+        if ( empty($this->current_tab['name']) )
             return;
 
-        global $pagenow;
+        $curr = (array) $this->current_tab;
 
-        if ( 'options-general.php' === $pagenow || ('settings.php' === $pagenow && is_network_admin()) ) {
-            if ($this->current_tab_id && !$this->current_tab) {
-                return bbpm_redirect(esc_url('?page=bbpress-messages'), 1);
+        if ( !is_array($tab) )
+            return;
+
+        foreach ( (array) $tab as $prop=>$data ) {
+            switch ($prop) {
+                case 'id':
+                case 'name':
+                    break;
+                
+                default:
+                    unset($tab[$prop]);
+                    break;
             }
         }
+
+        foreach ( $curr as $prop=>$data ) {
+            switch ($prop) {
+                case 'id':
+                case 'name':
+                    # code...
+                    break;
+                
+                default:
+                    unset($curr[$prop]);
+                    break;
+            }
+        }
+
+        return ($tab && $curr) && $tab == $curr;
     }
 
     public function menu()
     {
-        if ( !$this->tabs || !is_array($this->tabs) ) {
+        $tabs = bbpm_admin_tabs();
+
+        if ( !$tabs || !is_array($tabs) ) {
             return;
         }
+
+        if ( empty($this->current_tab['name']) )
+            return;
+
         ?>
 
         <?php if ( $this->current_tab && !empty($this->current_tab['name']) ) : ?>
             <h2><?php printf( __('%1$s &lsaquo; %2$s', BBP_MESSAGES_DOMAIN), $this->current_tab['name'], BBP_MESSAGES_NAME ); ?></h2>
         <?php endif; ?>
-
-        <h2 class="nav-tab-wrapper">
-            <?php foreach ( $this->tabs as $name=>$tab ) : ?>
-                <a 
-                    class="nav-tab<?php echo $tab == $this->current_tab ?" nav-tab-active":"";?>"
-                    href="<?php echo esc_url($tab['link']); ?>"
-                >
-                    <span><?php echo esc_attr($tab['name']); ?></span>
-                </a>
-            <?php endforeach; ?>
-        </h2>
-        <p></p>
 
         <?php
     }
@@ -202,24 +260,29 @@ class Screen
 
     public function sidebar()
     {
-        ?>
+        if ( !empty($this->current_tab['sidebar']) && is_callable($this->current_tab['sidebar']) ) {
+            // custom sidebar
+            call_user_func($this->current_tab['sidebar']);
+        } else {
+            ?>
 
-        <p>Thank you for using bbPress Messages plugin! Did you like the new update? Don't hesitate to leave us a rating and an optional review! That helps. <a target="_blank" href="https://wordpress.org/support/plugin/bbp-messages/reviews/?rate=5#new-post">&star;&star;&star;&star;&star; &rarr;</a></p>
+            <p>Thank you for using bbPress Messages plugin! Did you like the new update? Don't hesitate to leave us a rating and an optional review! That helps. <a target="_blank" href="https://wordpress.org/support/plugin/bbp-messages/reviews/?rate=5#new-post">&star;&star;&star;&star;&star; &rarr;</a></p>
 
-        <strong>Support</strong>
+            <strong>Support</strong>
 
-        <p>bbPress Messages support is offered through wp-org support forums. <a target="_blank" href="https://wordpress.org/support/plugin/bbp-messages">Find Support</a></p>
+            <p>bbPress Messages support is offered through wp-org support forums. <a target="_blank" href="https://wordpress.org/support/plugin/bbp-messages">Find Support</a></p>
 
-        <strong>Help us out</strong>
+            <strong>Help us out</strong>
 
-        <p>Whether you found a bug and wanted to report it, or you had some ideas to improve this plugin, or features, or wanted to contribute to the core, please consult the Github repository for this plugin at <a target="_blank" href="https://github.com/elhardoum/bbp-messages">https://github.com/elhardoum/bbp-messages</a>. PRs are welcome!</p>
+            <p>Whether you found a bug and wanted to report it, or you had some ideas to improve this plugin, or features, or wanted to contribute to the core, please consult the Github repository for this plugin at <a target="_blank" href="https://github.com/elhardoum/bbp-messages">https://github.com/elhardoum/bbp-messages</a>. PRs are welcome!</p>
 
-        <p>You can also contribute your translations and <a href="https://translate.wordpress.org/projects/wp-plugins/bbp-messages">help translate this plugin</a> to your language!</p>
+            <p>You can also contribute your translations and <a href="https://translate.wordpress.org/projects/wp-plugins/bbp-messages">help translate this plugin</a> to your language!</p>
 
-        <strong>Stay tuned</strong>
+            <strong>Stay tuned</strong>
 
-        <p>Currently, we're working on preparing some free and premium addons for bbPress Messages 2.0, and tutorials on how to customize it to fit your needs. <a href="https://go.samelh.com/newsletter/" target="_blank">Sign up for the newsletter</a> to get notified!</p>
+            <p>Currently, we're working on preparing some free and premium addons for bbPress Messages 2.0, and tutorials on how to customize it to fit your needs. <a href="https://go.samelh.com/newsletter/" target="_blank">Sign up for the newsletter</a> to get notified!</p>
 
-        <?php
+            <?php
+        }
     }
 }

@@ -849,18 +849,21 @@ class Init
     {
         $css = apply_filters('bbpm_assets-style.css', BBP_MESSAGES_URL . 'assets/css/style.css');
 
-        if ( $css )
+        if ( $css ) {
             wp_register_style('bbpm-style', $css, array(), BBP_MESSAGES_VER);
+        }
 
         $css = apply_filters('bbpm_assets-messages.css', BBP_MESSAGES_URL . 'assets/css/messages.css');
 
-        if ( $css )
+        if ( $css ) {
             wp_register_style('bbpm-messages', $css, array(), BBP_MESSAGES_VER);
+        }
 
         $js = apply_filters('bbpm_assets-messages.js', BBP_MESSAGES_URL . 'assets/js/messages.js');
         
-        if ( $css )
+        if ( $css ) {
             wp_register_script('bbpm-messages', $js, array(), BBP_MESSAGES_VER);        
+        }
     }
 
     public function enqueueScripts()
