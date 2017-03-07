@@ -3,7 +3,7 @@ Contributors: elhardoum
 Tags: messages, bbPress, forums, private messages, buddypress, contact, widget, embed, conversations, notifications, email, child themes
 Requires at least: 3.0.1
 Tested up to: 4.7.2
-Stable tag: 2.0.4
+Stable tag: 2.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Author URI: http://samelh.com/
@@ -28,6 +28,9 @@ bbPress Messages - Simple yet powerful private messaging system tailored for bbP
 
 <h4>Shortcodes</h4>
 <p>We've added couple shortcodes and rewrote older shortcodes, you can find out about shortcodes in the shortcodes tab in the settings page.</p>
+
+<h4>Widgets</h4>
+<p>We've redesigned the widgets for 2.0! Navigate to your dashboard and search for bbPM widgets now.</p>
 
 <p>Other than that, bbPress Messages 2.0 is easy to extend, supports multisite installations, and we will be working on some free addons to extend its features and improve more. Please consult the project Github page <a href="https://github.com/elhardoum/bbp-messages">https://github.com/elhardoum/bbp-messages</a> to report a bug, contribute to the project or make suggestions.</p>
 

@@ -30,34 +30,8 @@ class MyContacts extends \WP_Widget
 
         $m = bbpm_messages();
         $chats = $m->getUserChatsRaw($m->current_user);
-
-        $contacts = array();
-
-        if ( $chats ) {
-            foreach ( $chats as $chat_id ) {
-
-                $found = $m->arrayWithout($m->getChatRecipients($chat_id), $current_user->ID);
-
-                if ( $found ) {
-                    foreach ( $found as $uid ) {
-                        if ( !in_array($uid, $contacts) ) {
-                            $contacts[] = $uid;
-                        }
-
-                        if ( count($contacts) >= $limit )
-                            break;
-                    }
-                }
-
-                if ( count($contacts) >= $limit )
-                    break;
-            }
-        }
-
-        if ( $contacts ) {
-            $contacts = array_map('get_userdata', $contacts);
-        }
-
+        $contacts = $m->getUserContacts($m->current_user, $limit);
+        
         bbpm_load_template('widgets/my-contacts.php', compact('current_user', 'title', 'args', 'contacts'));
     }
 

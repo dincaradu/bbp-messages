@@ -70,6 +70,7 @@ class Admin
         add_filter('plugin_row_meta', array($this, 'rowMetaLinks'), 10, 2);
 
         add_action($prefix . 'admin_menu', array($this, 'welcome'));
+        add_action($prefix . 'admin_menu', array($this, 'checkDb'));
 
         do_action('bbpm_admin_loaded', $this);
 
@@ -179,7 +180,7 @@ class Admin
     {
         ob_start();
 
-        bbpm_load_template('admin/welcome-2.0.4.html');
+        bbpm_load_template('admin/welcome.html');
 
         $welcome = ob_get_clean();
 
@@ -189,10 +190,23 @@ class Admin
                 '{{VERSION}}'
             ),
             array(
-                $this->screen->tabs['settings']['link'],
+                $this->screen->getLink(null),
                 BBP_MESSAGES_VER
             ),
             $welcome
         );
+    }
+
+    public function checkDb()
+    {
+        global $wpdb;
+        $m = bbpm_messages();
+
+        if ( !$wpdb->query("DESCRIBE {$m->wpdb_prefix}{$m->table}") ) {
+            $this->feedback(
+                __('<strong>bbPress Messages error</strong>: database error, the main database table was not inserted correctly. If you have just updated the plugin, please deactivate it and activate it once again, otherwise, please consult the support forums for help.', BBP_MESSAGES_DOMAIN),
+                false
+            );
+        }
     }
 }

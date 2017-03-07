@@ -288,4 +288,48 @@ class Messages extends \WP_Messages
                 break;
         }
     }
+
+    public function getUserContacts($user_id=null, $limit=10, $map='get_userdata')
+    {
+        if ( !$user_id ) {
+            $user_id = $this->current_user;
+        }
+        
+        if ( !$user_id )
+            return array();
+
+        if ( !intval($limit) ) {
+            $limit = 10;
+        }
+
+        $chats = $this->getUserChatsRaw($user_id);
+
+        $contacts = array();
+
+        if ( $chats ) {
+            foreach ( $chats as $chat_id ) {
+                $found = $this->arrayWithout($this->getChatRecipients($chat_id), $user_id);
+
+                if ( $found ) {
+                    foreach ( $found as $uid ) {
+                        if ( !in_array($uid, $contacts) ) {
+                            $contacts[] = $uid;
+                        }
+
+                        if ( count($contacts) >= $limit )
+                            break;
+                    }
+                }
+
+                if ( count($contacts) >= $limit )
+                    break;
+            }
+        }
+
+        if ( $contacts && $map && is_callable($map) ) {
+            $contacts = array_map($map, $contacts);
+        }
+
+        return $contacts;
+    }
 }

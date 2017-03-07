@@ -14,6 +14,7 @@ class Init
             'new' => 'new',
             'with' => 'w'
         );
+
         $this->rewrite_rules = array(
             // index
             '{rewrite_base}{messages_base}/?$' => 'index.php?bbp_user=$matches[1]&BPT_tab=messages&bbpm_chats=1&bbpm_page=$matches[3]',
@@ -29,6 +30,18 @@ class Init
             '{rewrite_base}{messages_base}/([^/]+)/actions/?$' => 'index.php?bbp_user=$matches[1]&BPT_tab=messages&bbpm_chat=$matches[2]&bbpm_actions=1',
             '{rewrite_base}{messages_base}/([^/]+)/{page_base}/([0-9]+)/?$' => 'index.php?bbp_user=$matches[1]&BPT_tab=messages&bbpm_chat=$matches[2]&bbpm_page=$matches[3]',
         );
+
+        $this->query_vars = array(
+            'bbpm_chat',
+            'bbpm_page',
+            'bbpm_chats',
+            'bbpm_settings',
+            'bbpm_new',
+            'bbpm_with',
+            'bbpm_send',
+            'bbpm_actions'
+        );
+
         $this->loop_chats = array(
             'chats' => array(),
             'current_index' => -1,
@@ -469,16 +482,7 @@ class Init
 
     public function queryVars($args)
     {
-        return array_merge($args, array(
-            'bbpm_chat',
-            'bbpm_page',
-            'bbpm_chats',
-            'bbpm_settings',
-            'bbpm_new',
-            'bbpm_with',
-            'bbpm_send',
-            'bbpm_actions'
-        ));
+        return array_merge($args, $this->query_vars);
     }
 
     public function parseQuery()
