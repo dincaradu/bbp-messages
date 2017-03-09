@@ -87,8 +87,6 @@ class BbpMessages
     public function loadMessages($ins=null)
     {
         $this->messages = is_object($ins) ? $ins : new \BBP_MESSAGES\Inc\Core\Messages;
-        // pluggable
-        do_action_ref_array('bbpm_wp_messages', array( &$this->messages ));
         // return an instance
         return $this;
     }
@@ -156,6 +154,8 @@ class BbpMessages
         }
         // text domain
         $this->loadTextDomain();
+        // extend messages class
+        do_action_ref_array('bbpm_wp_messages', array( &$this->messages ));
         // WP_Messages class
         call_user_func(array($this->messages, 'init'));
         // init class
@@ -166,6 +166,8 @@ class BbpMessages
         call_user_func(array($this->init_class, 'init'));
         // shortcodes class
         $this->shortcodes_class = new \BBP_MESSAGES\Inc\Core\Shortcodes;
+        // pluggable
+        do_action_ref_array('bbpm_shortcodes_class', array( &$this->shortcodes_class ));
         // initialize
         call_user_func(array($this->shortcodes_class, 'init'));
 

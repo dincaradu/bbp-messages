@@ -26,7 +26,7 @@ class Init
             '{rewrite_base}{messages_base}/{with}/([^/]+)/?$' => 'index.php?bbp_user=$matches[1]&BPT_tab=messages&bbpm_with=$matches[2]',
             // single chat
             '{rewrite_base}{messages_base}/([^/]+)/?$' => 'index.php?bbp_user=$matches[1]&BPT_tab=messages&bbpm_chat=$matches[2]',
-            '{rewrite_base}{messages_base}/([^/]+)/{settings_base}?$' => 'index.php?bbp_user=$matches[1]&BPT_tab=messages&bbpm_chat=$matches[2]&bbpm_settings=1',
+            '{rewrite_base}{messages_base}/([^/]+)/{settings_base}/?$' => 'index.php?bbp_user=$matches[1]&BPT_tab=messages&bbpm_chat=$matches[2]&bbpm_settings=1',
             '{rewrite_base}{messages_base}/([^/]+)/actions/?$' => 'index.php?bbp_user=$matches[1]&BPT_tab=messages&bbpm_chat=$matches[2]&bbpm_actions=1',
             '{rewrite_base}{messages_base}/([^/]+)/{page_base}/([0-9]+)/?$' => 'index.php?bbp_user=$matches[1]&BPT_tab=messages&bbpm_chat=$matches[2]&bbpm_page=$matches[3]',
         );
@@ -137,6 +137,8 @@ class Init
         add_action('bbpm_widget_start_output', array($this, 'enqueueStyleCSS'));
         // widget errors
         add_action('bbpm_widget_new_message_start_output', array($this, 'parseNewMessageWidgetErrors'));
+        // unslash
+        add_filter('bbpm_old_string', 'wp_unslash');
 
         do_action('bbpm_loaded', $this);
     }
@@ -865,7 +867,7 @@ class Init
 
         $js = apply_filters('bbpm_assets-messages.js', BBP_MESSAGES_URL . 'assets/js/messages.js');
         
-        if ( $css ) {
+        if ( $js ) {
             wp_register_script('bbpm-messages', $js, array(), BBP_MESSAGES_VER);        
         }
     }

@@ -31,8 +31,11 @@ class Messages extends \WP_Messages
     {
         switch ( $i ) {
             case 'paginate_links_args':
-                if ( isset($v['base']) ) {
-                    $v['base'] = str_replace( 99999, '%#%', esc_url( get_pagenum_link(99999) ) );
+                if ( isset($v['base']) && !isset($v['omit_bbpm_custom_base']) ) {
+                    global $wp_rewrite;
+
+                    if ( $wp_rewrite && $wp_rewrite instanceof \WP_Rewrite )
+                        $v['base'] = str_replace( 99999, '%#%', esc_url( get_pagenum_link(99999) ) );
                 }
                 break;
         }
@@ -331,5 +334,10 @@ class Messages extends \WP_Messages
         }
 
         return $contacts;
+    }
+
+    public function getUserChatsRaw($user_id)
+    {
+        return apply_filters('bbpm_user_chats_raw', parent::getUserChatsRaw($user_id));
     }
 }

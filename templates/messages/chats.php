@@ -2,16 +2,30 @@
 
 ?>
 
+<?php do_action('bbpm_chats_before_content'); ?>
+
 <div class="bbpm-chats bbpm-items">
 
     <div class="bbpm-head">
+
+        <?php do_action('bbpm_chats_before_header_content'); ?>
+
         <span class="bbpm-left">
+            <?php do_action('bbpm_chats_header_before_nav_links'); ?>
+
             <a href="<?php echo bbpm_messages_url($bbpm_bases['new']); ?>" class="bbpm-new"><?php _e('&plus; New Message', BBP_MESSAGES_DOMAIN); ?></a>
+
+            <?php do_action('bbpm_chats_header_nav_links'); ?>
         </span>
+
+        <?php do_action('bbpm_chats_header_before_search_form'); ?>
 
         <form method="get" action="<?php echo bbpm_messages_url(); ?>">
             <input type="text" name="search" value="<?php echo esc_attr(bbpm_search_query()); ?>" placeholder="<?php esc_attr_e('Search', BBP_MESSAGES_DOMAIN); ?>" />
         </form>
+
+        <?php do_action('bbpm_chats_after_header_content'); ?>
+
     </div>
 
     <div class="bbpm-body">
@@ -55,3 +69,5 @@
     </div>
 
 </div>
+
+<?php do_action('bbpm_chats_after_content'); ?>

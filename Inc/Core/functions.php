@@ -277,10 +277,17 @@ function bbpm_old( $name, $return=null, $default=null, $method='request' ) {
         $value = esc_attr( $value );
     }
 
+    $value = apply_filters( 'bbpm_old', $value, $name, $default, $method );
+    $value = apply_filters( 'bbpm_old_' . $name, $value, $default, $method );
+
+    if ( is_string( $value ) ) {
+        $value = apply_filters( 'bbpm_old_string', $value, $name, $default, $method );
+    }
+
     if ( $return ) {
-        return apply_filters( 'bbpm_old', $value, $name, $default, $method );
+        return $value;
     } else {
-        echo apply_filters( 'bbpm_old', $value, $name, $default, $method );
+        echo $value;
     }
 }
 endif;
@@ -696,4 +703,19 @@ function bbpm_prepare_contact_button($user_id) {
 
 function bbpm_admin_tabs() {
     return apply_filters('bbpm_admin_tabs', array());
+}
+
+function bbpm_bases($get=null) {
+    global $bbpm_bases;
+
+    if ( !$get )
+        return $bbpm_bases;
+
+    if ( isset($bbpm_bases[$get]) )
+        return $bbpm_bases[$get];
+}
+
+function bbpm_get_current_chat_id() {
+    global $bbpm_chat_id;
+    return apply_filters(__FUNCTION__, $bbpm_chat_id);
 }
