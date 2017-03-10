@@ -34,10 +34,8 @@ function bbpm_is_chats() {
 }
 
 function bbpm_messages_url($after='', $user_id=0) {
-    global $bbpm_bases;
-
     $url = bbpm_bbp_get_user_profile_url($user_id);
-    $url .= $bbpm_bases['messages_base'] . '/';
+    $url .= bbpm_bases('messages_base') . '/';
 
     if ( $after ) {
         $url = user_trailingslashit($url . $after);
