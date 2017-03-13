@@ -3,7 +3,7 @@ Contributors: elhardoum
 Tags: messages, bbPress, forums, private messages, buddypress, contact, widget, embed, conversations, notifications, email, child themes
 Requires at least: 3.0.1
 Tested up to: 4.7.3
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Author URI: http://samelh.com/
@@ -61,6 +61,9 @@ Enjoy!
 5. Admin settings screen
 
 == Changelog ==
+= 2.0.7 =
+* See Github <a href="https://github.com/elhardoum/bbp-messages/issues/1">#1</a> 
+
 = 2.0.4 =
 * Added widgets with minor improvements to core
 

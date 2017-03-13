@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the bbPress Messages package.
 msgid ""
 msgstr ""
-"Project-Id-Version: bbPress Messages 2.0.6\n"
+"Project-Id-Version: bbPress Messages 2.0.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bbp-messages\n"
-"POT-Creation-Date: 2017-03-07 10:14:43+00:00\n"
+"POT-Creation-Date: 2017-03-13 16:45:50+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#. #-#-#-#-#  bbp-messages.pot (bbPress Messages 2.0.6)  #-#-#-#-#
+#. #-#-#-#-#  bbp-messages.pot (bbPress Messages 2.0.7)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: BbpMessages.php:24 Inc/Admin/Screen.php:13
 msgid "bbPress Messages"
@@ -54,8 +54,8 @@ msgstr ""
 msgid "bbPM importer"
 msgstr ""
 
-#: Inc/Admin/Importers/bbPMessages.php:68 Inc/Core/Init.php:174
-#: Inc/Core/Init.php:353 Inc/Core/Init.php:1003
+#: Inc/Admin/Importers/bbPMessages.php:68 Inc/Core/Init.php:176
+#: Inc/Core/Init.php:355 Inc/Core/Init.php:1005
 msgid "Error: Bad authentication!"
 msgstr ""
 
@@ -245,7 +245,7 @@ msgid ""
 msgstr ""
 
 #: Inc/Admin/Settings.php:166 Inc/Admin/Settings.php:169
-#: templates/messages/single-settings.php:36
+#: templates/messages/single-settings.php:59
 msgid "Save Changes"
 msgstr ""
 
@@ -261,73 +261,73 @@ msgstr ""
 msgid "Changes saved successfully!"
 msgstr ""
 
-#: Inc/Core/Init.php:184
+#: Inc/Core/Init.php:186
 msgid "Error occured processing your request."
 msgstr ""
 
-#: Inc/Core/Init.php:192
+#: Inc/Core/Init.php:194
 msgid "Error: Could not find a sender for this message!"
 msgstr ""
 
-#: Inc/Core/Init.php:211
+#: Inc/Core/Init.php:213
 msgid "Error: Invalid recipient specified!"
 msgstr ""
 
-#: Inc/Core/Init.php:233
+#: Inc/Core/Init.php:235
 msgid "Error: Could not find a chat ID for this message!"
 msgstr ""
 
-#: Inc/Core/Init.php:395 Inc/Core/Init.php:412
+#: Inc/Core/Init.php:397 Inc/Core/Init.php:414
 msgid "Error: Please select at least 1 message for this action!"
 msgstr ""
 
-#: Inc/Core/Init.php:406
+#: Inc/Core/Init.php:408
 msgid "Your messages are being deleted."
 msgstr ""
 
-#: Inc/Core/Init.php:433
+#: Inc/Core/Init.php:435
 msgid "Error: Invalid bulk action!"
 msgstr ""
 
-#: Inc/Core/Init.php:450
+#: Inc/Core/Init.php:452
 msgid "Messages"
 msgstr ""
 
-#: Inc/Core/Init.php:454 templates/widgets/welcome.php:28
+#: Inc/Core/Init.php:456 templates/widgets/welcome.php:28
 msgid "Messages (%d)"
 msgstr ""
 
-#: Inc/Core/Init.php:594 Inc/Core/Init.php:620
+#: Inc/Core/Init.php:596 Inc/Core/Init.php:622
 msgid "Invalid user! Please search and select a recipient below."
 msgstr ""
 
-#: Inc/Core/Init.php:647
+#: Inc/Core/Init.php:649
 msgid ""
 "Sorry, you cannot contact this user. Please search and select a recipient "
 "below."
 msgstr ""
 
-#: Inc/Core/Init.php:710
+#: Inc/Core/Init.php:712
 msgid "Error: Could not find chat!"
 msgstr ""
 
-#: Inc/Core/Init.php:993
+#: Inc/Core/Init.php:995
 msgid "Settings updated successfully!"
 msgstr ""
 
-#: Inc/Core/Init.php:1014
+#: Inc/Core/Init.php:1016
 msgid "Your chat is being deleted."
 msgstr ""
 
-#: Inc/Core/Init.php:1029
+#: Inc/Core/Init.php:1031
 msgid "Chat successfully marked unread."
 msgstr ""
 
-#: Inc/Core/Init.php:1036
+#: Inc/Core/Init.php:1038
 msgid "Error: could not mark chat unread."
 msgstr ""
 
-#: Inc/Core/Init.php:1058
+#: Inc/Core/Init.php:1060
 msgid "Sorry, you cannot contact this user!"
 msgstr ""
 
@@ -506,111 +506,111 @@ msgid ""
 "logout link"
 msgstr ""
 
-#: Inc/Core/functions.php:129
+#: Inc/Core/functions.php:127
 msgctxt "time quantities"
 msgid "a moment"
 msgstr ""
 
-#: Inc/Core/functions.php:141
+#: Inc/Core/functions.php:139
 msgctxt "time quantities"
 msgid "year"
 msgstr ""
 
-#: Inc/Core/functions.php:142
+#: Inc/Core/functions.php:140
 msgctxt "time quantities"
 msgid "month"
 msgstr ""
 
-#: Inc/Core/functions.php:143
+#: Inc/Core/functions.php:141
 msgctxt "time quantities"
 msgid "day"
 msgstr ""
 
-#: Inc/Core/functions.php:144
+#: Inc/Core/functions.php:142
 msgctxt "time quantities"
 msgid "hour"
 msgstr ""
 
-#: Inc/Core/functions.php:145
+#: Inc/Core/functions.php:143
 msgctxt "time quantities"
 msgid "minute"
 msgstr ""
 
-#: Inc/Core/functions.php:146
+#: Inc/Core/functions.php:144
 msgctxt "time quantities"
 msgid "second"
 msgstr ""
 
-#: Inc/Core/functions.php:147
+#: Inc/Core/functions.php:145
 msgctxt "time quantities"
 msgid "years"
 msgstr ""
 
-#: Inc/Core/functions.php:148
+#: Inc/Core/functions.php:146
 msgctxt "time quantities"
 msgid "months"
 msgstr ""
 
-#: Inc/Core/functions.php:149
+#: Inc/Core/functions.php:147
 msgctxt "time quantities"
 msgid "days"
 msgstr ""
 
-#: Inc/Core/functions.php:150
+#: Inc/Core/functions.php:148
 msgctxt "time quantities"
 msgid "hours"
 msgstr ""
 
-#: Inc/Core/functions.php:151
+#: Inc/Core/functions.php:149
 msgctxt "time quantities"
 msgid "minutes"
 msgstr ""
 
-#: Inc/Core/functions.php:152
+#: Inc/Core/functions.php:150
 msgctxt "time quantities"
 msgid "seconds"
 msgstr ""
 
-#: Inc/Core/functions.php:289
+#: Inc/Core/functions.php:294
 msgid "Type a message.."
 msgstr ""
 
-#: Inc/Core/functions.php:449 Inc/Core/functions.php:457
+#: Inc/Core/functions.php:454 Inc/Core/functions.php:462
 msgid "&nbsp;<em class=\"bbpm-inline-tooltip\">[pending-delete]</em>"
 msgstr ""
 
-#: Inc/Core/functions.php:504
+#: Inc/Core/functions.php:509
 msgctxt "page title format"
 msgid "%1$s | %2$s"
 msgstr ""
 
-#: Inc/Core/functions.php:511 Inc/Core/functions.php:530
-#: Inc/Core/functions.php:535
+#: Inc/Core/functions.php:516 Inc/Core/functions.php:535
+#: Inc/Core/functions.php:540
 msgctxt "page title format"
 msgid "Messages"
 msgstr ""
 
-#: Inc/Core/functions.php:516
+#: Inc/Core/functions.php:521
 msgctxt "page title format"
 msgid "%s &rsaquo; Settings"
 msgstr ""
 
-#: Inc/Core/functions.php:520
+#: Inc/Core/functions.php:525
 msgctxt "page title format"
 msgid "Edit chat"
 msgstr ""
 
-#: Inc/Core/functions.php:526
+#: Inc/Core/functions.php:531
 msgctxt "page title format"
 msgid "Messages &rsaquo; %s"
 msgstr ""
 
-#: Inc/Core/functions.php:533
+#: Inc/Core/functions.php:538
 msgctxt "page title format"
 msgid "New Message"
 msgstr ""
 
-#: Inc/Core/functions.php:594
+#: Inc/Core/functions.php:599
 msgid ""
 "Dear %1$s,\n"
 "%2$s has recently sent you new messages on %3$s:\n"
@@ -627,11 +627,11 @@ msgid ""
 "screen."
 msgstr ""
 
-#: Inc/Core/functions.php:689
+#: Inc/Core/functions.php:694
 msgid "Send %s a Message"
 msgstr ""
 
-#: Inc/Core/functions.php:692
+#: Inc/Core/functions.php:697
 msgid "Send a Message"
 msgstr ""
 
@@ -684,32 +684,32 @@ msgctxt "Pagination next"
 msgid "&rarr;"
 msgstr ""
 
-#: templates/messages/chats.php:9
+#: templates/messages/chats.php:16
 msgid "&plus; New Message"
 msgstr ""
 
-#: templates/messages/chats.php:13 templates/messages/new.php:43
-#: templates/messages/single-chat.php:21 templates/widgets/search.php:12
+#: templates/messages/chats.php:24 templates/messages/new.php:43
+#: templates/messages/single-chat.php:35 templates/widgets/search.php:12
 msgid "Search"
 msgstr ""
 
-#: templates/messages/chats.php:21 templates/messages/single-chat.php:28
+#: templates/messages/chats.php:35 templates/messages/single-chat.php:46
 msgid "Showing search results for \"%s\":"
 msgstr ""
 
-#: templates/messages/chats.php:39
+#: templates/messages/chats.php:53
 msgid ""
 "No chats have matched your search query, please try again with a different "
 "search term"
 msgstr ""
 
-#: templates/messages/chats.php:43
+#: templates/messages/chats.php:57
 msgid ""
 "There are no chats to show. Get started by <a href=\"%s\">sending a message "
 "&raquo;</a>"
 msgstr ""
 
-#: templates/messages/loop-chat.php:7 templates/messages/single-chat.php:9
+#: templates/messages/loop-chat.php:7 templates/messages/single-chat.php:13
 msgid "Chat icon"
 msgstr ""
 
@@ -749,93 +749,93 @@ msgstr ""
 msgid "Select recipient"
 msgstr ""
 
-#: templates/messages/single-chat.php:15
+#: templates/messages/single-chat.php:23
 msgid "Back to chats"
 msgstr ""
 
-#: templates/messages/single-chat.php:17
+#: templates/messages/single-chat.php:27
 msgid "Chat options"
 msgstr ""
 
-#: templates/messages/single-chat.php:17
+#: templates/messages/single-chat.php:27
 msgid "Options"
 msgstr ""
 
-#: templates/messages/single-chat.php:48
+#: templates/messages/single-chat.php:72
 msgid "Mark Unread"
 msgstr ""
 
-#: templates/messages/single-chat.php:56
+#: templates/messages/single-chat.php:84
 msgctxt "bulk actions menu"
 msgid "Bulk Actions"
 msgstr ""
 
-#: templates/messages/single-chat.php:57
+#: templates/messages/single-chat.php:85
 msgctxt "bulk actions menu"
 msgid "Delete"
 msgstr ""
 
-#: templates/messages/single-chat.php:61
+#: templates/messages/single-chat.php:91
 msgctxt "bulk actions menu"
 msgid "&check;"
 msgstr ""
 
-#: templates/messages/single-chat.php:67
+#: templates/messages/single-chat.php:104
 msgctxt "message read receipts"
 msgid "&check; Seen"
 msgstr ""
 
-#: templates/messages/single-chat.php:69
+#: templates/messages/single-chat.php:106
 msgid "Seen by %s"
 msgstr ""
 
-#: templates/messages/single-chat.php:80
+#: templates/messages/single-chat.php:124
 msgid ""
 "No messages have matched your search query, please try again with a "
 "different search term"
 msgstr ""
 
-#: templates/messages/single-chat.php:84
+#: templates/messages/single-chat.php:130
 msgid "There are no messages to show."
 msgstr ""
 
-#: templates/messages/single-settings.php:8
+#: templates/messages/single-settings.php:12
 msgid "Chat Settings"
 msgstr ""
 
-#: templates/messages/single-settings.php:11
+#: templates/messages/single-settings.php:17
 msgid "Chat name:"
 msgstr ""
 
-#: templates/messages/single-settings.php:15
+#: templates/messages/single-settings.php:21
 msgid "Assign a name to this chat"
 msgstr ""
 
-#: templates/messages/single-settings.php:21
+#: templates/messages/single-settings.php:33
 msgid "Get email notifications about new messages in this chat"
 msgstr ""
 
-#: templates/messages/single-settings.php:24
+#: templates/messages/single-settings.php:36
 msgid ""
 "To unsubscribe from all, you can toggle off the email notifications from "
 "your profile edit screen."
 msgstr ""
 
-#: templates/messages/single-settings.php:28
+#: templates/messages/single-settings.php:46
 msgid "Delete Chat"
 msgstr ""
 
-#: templates/messages/single-settings.php:30
+#: templates/messages/single-settings.php:48
 msgid ""
 "Warning: this action is irreversible and you cannot restore your chat "
 "messages once deleted."
 msgstr ""
 
-#: templates/messages/single-settings.php:37
+#: templates/messages/single-settings.php:63
 msgid "cancel"
 msgstr ""
 
-#: templates/messages/single-settings.php:42
+#: templates/messages/single-settings.php:70
 msgid "Are you sure you want to proceed?"
 msgstr ""
 

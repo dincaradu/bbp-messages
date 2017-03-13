@@ -28,10 +28,10 @@ class bbPMessages
 
         $this->admin()->feedback(sprintf(
             __('<strong>bbPress Messages v2:</strong> Import older messages now from legacy data table. Click <a href="%1$s">here</a> to begin import or <a href="%2$s">dismiss</a> this notice.', BBP_MESSAGES_DOMAIN),
-            ($network_active ? network_admin_url('admin.php') : admin_url('admin.php.php')) . (
+            ($network_active ? network_admin_url('admin.php') : admin_url('admin.php')) . (
                 '?page=bbpm-bbpm-import'
             ),
-            ($network_active ? network_admin_url('admin.php') : admin_url('admin.php.php')) . (
+            ($network_active ? network_admin_url('admin.php') : admin_url('admin.php')) . (
                 '?page=bbpm-bbpm-import&bbpm-dismiss=1'
             )
         ), true);

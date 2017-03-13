@@ -29,3 +29,5 @@ if ( defined('DOING_AJAX') && DOING_AJAX ) {
 } else {
 	check_admin_referer( 'bulk-plugins' );
 }
+
+// coming soon.

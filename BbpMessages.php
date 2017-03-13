@@ -20,7 +20,7 @@ class BbpMessages
         $constants = array(
             "BBP_MESSAGES_DIR" => plugin_dir_path(BBP_MESSAGES_FILE),
             "BBP_MESSAGES_URL" => plugin_dir_url(BBP_MESSAGES_FILE),
-            "BBP_MESSAGES_VER" => '2.0.6',
+            "BBP_MESSAGES_VER" => '2.0.7',
             "BBP_MESSAGES_NAME" => __('bbPress Messages', 'bbp-messages'),
             "BBP_MESSAGES_BASE" => plugin_basename(BBP_MESSAGES_FILE),
             "BBP_MESSAGES_DOMAIN" => 'bbp-messages'
