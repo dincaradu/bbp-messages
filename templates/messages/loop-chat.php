@@ -1,4 +1,4 @@
-<?php global $bbpm_chat; $chat = (object) $bbpm_chat;
+<?php global $bbpm_chat; $chat = (object) apply_filters('bbpm_chat_data', $bbpm_chat);
 ?>
 
 <li class="bbpm-item bbpm-chat <?php echo implode(' ', $chat->classes); ?>" data-chatid="<?php echo $chat->chat_id; ?>">
