@@ -211,11 +211,3 @@ class BbpMessages
         return $this;
     }
 }
-
-global $bbpm_loader;
-// loader class
-$bbpm_loader = new \BBP_MESSAGES\BbpMessages;
-// setup
-$bbpm_loader->setup();
-// init
-add_action('plugins_loaded', array($bbpm_loader, 'init'));
