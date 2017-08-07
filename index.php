@@ -33,19 +33,15 @@ if ($bbPMCheckReady instanceof bbPMCheckReady) {
 
     // load plugin
     require('BbpMessages.php');
+
+    // init
+    global $bbpm_loader;
+    // loader class
+    $bbpm_loader = new \BBP_MESSAGES\BbpMessages;
+    // setup
+    $bbpm_loader->setup();
 }
 
-
-/**
-  * Init plugin when bbPress is active
-  */
-global $bbpm_loader;
-// loader class
-$bbpm_loader = new \BBP_MESSAGES\BbpMessages;
-// setup
-$bbpm_loader->setup();
-
-// init
 function bbp_messages_loaded(){
     global $bbpm_loader;
 
