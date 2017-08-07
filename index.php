@@ -34,3 +34,24 @@ if ($bbPMCheckReady instanceof bbPMCheckReady) {
     // load plugin
     require('BbpMessages.php');
 }
+
+
+/**
+  * Init plugin when bbPress is active
+  */
+global $bbpm_loader;
+// loader class
+$bbpm_loader = new \BBP_MESSAGES\BbpMessages;
+// setup
+$bbpm_loader->setup();
+
+// init
+function bbp_messages_loaded(){
+    if( ! class_exists('bbPress') ) {
+        return;
+    }
+
+    global $bbpm_loader;
+    $bbpm_loader->init();
+}
+add_action('plugins_loaded', 'bbp_messages_loaded', 10, 0);
