@@ -33,24 +33,20 @@ if ($bbPMCheckReady instanceof bbPMCheckReady) {
 
     // load plugin
     require('BbpMessages.php');
+
+    // init
+    global $bbpm_loader;
+    // loader class
+    $bbpm_loader = new \BBP_MESSAGES\BbpMessages;
+    // setup
+    $bbpm_loader->setup();
 }
 
-
-/**
-  * Init plugin when bbPress is active
-  */
-global $bbpm_loader;
-// loader class
-$bbpm_loader = new \BBP_MESSAGES\BbpMessages;
-// setup
-$bbpm_loader->setup();
-
-// init
 function bbp_messages_loaded(){
     global $bbpm_loader;
 
     if( ! class_exists('bbPress') ) {
-        return add_action('admin_init', array($bbpm_loader, 'deactivate'));;
+        return add_action('admin_init', array($bbpm_loader, 'deactivate'));
     }
 
     $bbpm_loader->init();
