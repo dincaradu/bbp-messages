@@ -33,7 +33,7 @@
 
         <li class="form-section">
             <?php wp_nonce_field('send_message', 'bbpm_nonce'); ?>
-            <input type="submit" value="<?php esc_attr_e('Send', BBP_MESSAGES_DOMAIN); ?>" />
+            <input type="submit" value="<?php esc_attr_e('Send', 'bbp-messages'); ?>" />
         </li>
     </ul>
 
