@@ -206,7 +206,7 @@ class BbpMessages
 
     public function loadTextDomain()
     {
-        load_plugin_textdomain(BBP_MESSAGES_DOMAIN, false, dirname(BBP_MESSAGES_BASE).'/languages');
+        load_plugin_textdomain("bbp-messages", false, dirname(BBP_MESSAGES_BASE).'/languages');
 
         return $this;
     }

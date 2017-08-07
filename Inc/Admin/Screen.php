@@ -10,8 +10,8 @@ class Screen
     public function setupPages()
     {
         add_menu_page(
-            __('bbPress Messages', BBP_MESSAGES_DOMAIN),
-            __('bbP Messages', BBP_MESSAGES_DOMAIN),
+            __('bbPress Messages', "bbp-messages"),
+            __('bbP Messages', "bbp-messages"),
             'manage_options',
             'bbpress-messages',
             array($this, 'screen'),
@@ -20,8 +20,8 @@ class Screen
 
         add_submenu_page(
             'bbpress-messages',
-            sprintf(__('%s &lsaquo; bbPress Messages', BBP_MESSAGES_DOMAIN), __('Settings', BBP_MESSAGES_DOMAIN)),
-            __('Settings', BBP_MESSAGES_DOMAIN),
+            sprintf(__('%s &lsaquo; bbPress Messages', "bbp-messages"), __('Settings', "bbp-messages")),
+            __('Settings', "bbp-messages"),
             'manage_options',
             'bbpress-messages'
         );
@@ -34,7 +34,7 @@ class Screen
 
             add_submenu_page(
                 'bbpress-messages',
-                sprintf(__('%s &lsaquo; bbPress Messages', BBP_MESSAGES_DOMAIN), $tab['name']),
+                sprintf(__('%s &lsaquo; bbPress Messages', "bbp-messages"), $tab['name']),
                 $tab['name'],
                 'manage_options',
                 'bbpm-'.$tab['id'],
@@ -84,7 +84,7 @@ class Screen
         $tabs = bbpm_admin_tabs();
 
         if ( !$tabs || !is_array($tabs) ) {
-            wp_die(__('No tabs loaded yet.', BBP_MESSAGES_DOMAIN));
+            wp_die(__('No tabs loaded yet.', "bbp-messages"));
         }
 
         $get_page = $this->admin()->get_page;
@@ -156,7 +156,7 @@ class Screen
         ?>
 
         <?php if ( $this->current_tab && !empty($this->current_tab['name']) ) : ?>
-            <h2><?php printf( __('%1$s &lsaquo; %2$s', BBP_MESSAGES_DOMAIN), $this->current_tab['name'], BBP_MESSAGES_NAME ); ?></h2>
+            <h2><?php printf( __('%1$s &lsaquo; %2$s', "bbp-messages"), $this->current_tab['name'], BBP_MESSAGES_NAME ); ?></h2>
         <?php endif; ?>
 
         <?php
@@ -205,7 +205,7 @@ class Screen
         } else {
             // print an error message
             $this->admin()->feedback(
-                __('This custom tab does not appear to have a valid content callback.', BBP_MESSAGES_DOMAIN),
+                __('This custom tab does not appear to have a valid content callback.', "bbp-messages"),
                 false
             )->uiFeedback();
         }

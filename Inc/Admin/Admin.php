@@ -127,8 +127,8 @@ class Admin
     public function actionLinks($l)
     {
         return array_merge(array(
-            sprintf('<a href="%s">%s</a>', $this->screen->getLink(null), __('Settings', BBP_MESSAGES_DOMAIN)),
-            '<a href="index.php?page=bbpm-about">' . __('About', BBP_MESSAGES_DOMAIN) . '</a>'
+            sprintf('<a href="%s">%s</a>', $this->screen->getLink(null), __('Settings', "bbp-messages")),
+            '<a href="index.php?page=bbpm-about">' . __('About', "bbp-messages") . '</a>'
         ), $l);
     }
 
@@ -152,7 +152,7 @@ class Admin
         }
 
         // others
-        // $l[] = '<a href="index.php?page=bbpm-about">' . __('About', BBP_MESSAGES_DOMAIN) . '</a>';
+        // $l[] = '<a href="index.php?page=bbpm-about">' . __('About', "bbp-messages") . '</a>';
 
         return $l;
     }
@@ -161,8 +161,8 @@ class Admin
     {
         add_submenu_page(
             null,
-            __('Welcome to bbPress Messages', BBP_MESSAGES_DOMAIN),
-            __('Welcome to bbPress Messages', BBP_MESSAGES_DOMAIN),
+            __('Welcome to bbPress Messages', "bbp-messages"),
+            __('Welcome to bbPress Messages', "bbp-messages"),
             'manage_options',
             'bbpm-about',
             array($this, 'welcomeDisplay')
@@ -204,7 +204,7 @@ class Admin
 
         if ( !$wpdb->query("DESCRIBE {$m->wpdb_prefix}{$m->table}") ) {
             $this->feedback(
-                __('<strong>bbPress Messages error</strong>: database error, the main database table was not inserted correctly. If you have just updated the plugin, please deactivate it and activate it once again, otherwise, please consult the support forums for help.', BBP_MESSAGES_DOMAIN),
+                __('<strong>bbPress Messages error</strong>: database error, the main database table was not inserted correctly. If you have just updated the plugin, please deactivate it and activate it once again, otherwise, please consult the support forums for help.', "bbp-messages"),
                 false
             );
         }

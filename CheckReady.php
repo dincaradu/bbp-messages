@@ -99,9 +99,11 @@ Class bbPMCheckReady
     }
 
     public function redirect( $plugin ) {
-        if($plugin == plugin_basename(BBP_MESSAGES_FILE)) {
-            wp_redirect('index.php?page=bbpm-about');
-            exit;
+        switch ( $plugin ) {
+            case plugin_basename(BBP_MESSAGES_FILE):
+                wp_redirect('index.php?page=bbpm-about');
+                exit;
+                break;
         }
     }
 }

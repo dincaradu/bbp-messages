@@ -22,7 +22,7 @@
                 </a>
                 <br/>
                 <a href="<?php echo bbpm_messages_url($bbpm_bases['with'] . '/' . $user->ID, $current_user->ID); ?>">
-                    <?php _e('View Messages &rarr;', BBP_MESSAGES_DOMAIN); ?>
+                    <?php _e('View Messages &rarr;', "bbp-messages"); ?>
                 </a>
             </li>
 
@@ -31,7 +31,7 @@
     </ul>
 <?php else : ?>
 
-    <p><?php _e('No contacts were found.', BBP_MESSAGES_DOMAIN); ?></p>
+    <p><?php _e('No contacts were found.', "bbp-messages"); ?></p>
 
 <?php endif; ?>
 

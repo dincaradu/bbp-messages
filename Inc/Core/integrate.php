@@ -46,7 +46,7 @@ function bbpm_bbp_profile_edit_preferences_field() {
             
         <label for="bbpm_notify">
             <input type="checkbox" name="bbpm_notify" id="bbpm_notify" <?php checked(get_user_meta($user_id, 'bbpm_mute_notifications', true), false); ?> />
-            <span style="vertical-align:top"><?php _e('Allow email notifications of new messages', BBP_MESSAGES_DOMAIN); ?></span>
+            <span style="vertical-align:top"><?php _e('Allow email notifications of new messages', "bbp-messages"); ?></span>
         </label>
     </div>
     <?php

@@ -5,9 +5,9 @@ class MyMessages extends \WP_Widget
     public function __construct() {
         parent::__construct(
             'bbPMMyMessages', 
-            __('bbPM My Messages', BBP_MESSAGES_DOMAIN), 
+            __('bbPM My Messages', "bbp-messages"), 
             array(
-                'description' => __('Lists current user\'s recent messages', BBP_MESSAGES_DOMAIN)
+                'description' => __('Lists current user\'s recent messages', "bbp-messages")
             ) 
         );
     }
@@ -69,18 +69,18 @@ class MyMessages extends \WP_Widget
         $bychat = isset($instance['bychat']);
         ?>
             <p>
-                <label for="<?php echo $this->get_field_id( 'title' ); ?>" style="font-weight:bold;"><?php _e('Widget Title:', BBP_MESSAGES_DOMAIN); ?></label> 
+                <label for="<?php echo $this->get_field_id( 'title' ); ?>" style="font-weight:bold;"><?php _e('Widget Title:', "bbp-messages"); ?></label> 
                 <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
             </p>
 
             <p>
-                <label for="<?php echo $this->get_field_id( 'limit' ); ?>" style="font-weight:bold;"><?php _e('Max items:', BBP_MESSAGES_DOMAIN); ?></label> 
+                <label for="<?php echo $this->get_field_id( 'limit' ); ?>" style="font-weight:bold;"><?php _e('Max items:', "bbp-messages"); ?></label> 
                 <input class="widefat" id="<?php echo $this->get_field_id('limit'); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" type="number" value="<?php echo $limit; ?>" />
             </p>
 
             <p>
                 <input id="<?php echo $this->get_field_id('bychat'); ?>" name="<?php echo $this->get_field_name( 'bychat' ); ?>" type="checkbox" <?php checked($bychat); ?> />
-                <label for="<?php echo $this->get_field_id( 'bychat' ); ?>"><?php _e('Group by chat (list 1 message per chat)', BBP_MESSAGES_DOMAIN); ?></label> 
+                <label for="<?php echo $this->get_field_id( 'bychat' ); ?>"><?php _e('Group by chat (list 1 message per chat)', "bbp-messages"); ?></label> 
             </p>
         <?php
     }

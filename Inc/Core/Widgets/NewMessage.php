@@ -5,9 +5,9 @@ class NewMessage extends \WP_Widget
     public function __construct() {
         parent::__construct(
             'bbPMNewMessage', 
-            __('bbPM new message', BBP_MESSAGES_DOMAIN), 
+            __('bbPM new message', "bbp-messages"), 
             array(
-                'description' => __('Allows current user to easily compose a new message selecting recipients from the dropdown', BBP_MESSAGES_DOMAIN)
+                'description' => __('Allows current user to easily compose a new message selecting recipients from the dropdown', "bbp-messages")
             ) 
         );
     }
@@ -33,7 +33,7 @@ class NewMessage extends \WP_Widget
         $title = isset($instance['title']) ? esc_attr($instance['title']) : '';
         ?>
             <p>
-                <label for="<?php echo $this->get_field_id( 'title' ); ?>" style="font-weight:bold;"><?php _e('Widget Title:', BBP_MESSAGES_DOMAIN); ?></label>
+                <label for="<?php echo $this->get_field_id( 'title' ); ?>" style="font-weight:bold;"><?php _e('Widget Title:', "bbp-messages"); ?></label>
                 <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
             </p>
         <?php

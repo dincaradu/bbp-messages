@@ -4,7 +4,7 @@
 <li class="bbpm-item bbpm-chat <?php echo implode(' ', $chat->classes); ?>" data-chatid="<?php echo $chat->chat_id; ?>">
     
     <div class="bbpm-icon">
-        <img src="<?php echo esc_url($chat->avatar); ?>" alt="<?php esc_attr_e('Chat icon', BBP_MESSAGES_DOMAIN); ?>" height="66" width="66" data-chatid="<?php echo $chat->chat_id; ?>" />
+        <img src="<?php echo esc_url($chat->avatar); ?>" alt="<?php esc_attr_e('Chat icon', "bbp-messages"); ?>" height="66" width="66" data-chatid="<?php echo $chat->chat_id; ?>" />
     </div>
 
     <div class="bbpm-details">
@@ -14,7 +14,7 @@
             <h3 class="bbpm-heading" data-chatid="<?php echo $chat->chat_id; ?>"><?php echo esc_attr($chat->name); ?></h3>
 
             <span class="bbpm-excerpt" data-chatid="<?php echo $chat->chat_id; ?>">
-                <?php echo bbpm_profile_linkit($chat->sender, esc_attr(get_current_user_id()!= $chat->sender ? $chat->sender_name : __('You', BBP_MESSAGES_DOMAIN))); ?>:
+                <?php echo bbpm_profile_linkit($chat->sender, esc_attr(get_current_user_id()!= $chat->sender ? $chat->sender_name : __('You', "bbp-messages"))); ?>:
                 <?php echo apply_filters('bbpm_excerpt', $chat->excerpt, $chat); ?>
             </span>
 
@@ -33,7 +33,7 @@
 
     <noscript>
         <a href="<?php echo esc_url(bbpm_messages_url($chat->chat_id)); ?>" class="bbpm-read">
-            <?php esc_attr_e('View chat', BBP_MESSAGES_DOMAIN); ?>
+            <?php esc_attr_e('View chat', "bbp-messages"); ?>
         </a>
     </noscript>
 </li>

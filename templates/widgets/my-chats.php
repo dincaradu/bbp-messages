@@ -18,7 +18,7 @@
                 </a>
 
                 <?php if ( !empty($chat['date']) ) : ?>
-                    <br/><em><?php printf(__('Last activity: %s ago', BBP_MESSAGES_DOMAIN), bbpm_time_diff($chat['date'])); ?></em>
+                    <br/><em><?php printf(__('Last activity: %s ago', "bbp-messages"), bbpm_time_diff($chat['date'])); ?></em>
                 <?php endif; ?>
             </li>
 
@@ -27,11 +27,11 @@
     </ul>
 <?php elseif ( $unread ) : ?>
 
-    <p><?php _e('No unread chats were found.', BBP_MESSAGES_DOMAIN); ?></p>
+    <p><?php _e('No unread chats were found.', "bbp-messages"); ?></p>
 
 <?php else : ?>
 
-    <p><?php _e('No chats were found.', BBP_MESSAGES_DOMAIN); ?></p>
+    <p><?php _e('No chats were found.', "bbp-messages"); ?></p>
 
 <?php endif; ?>
 

@@ -9,13 +9,13 @@
 
             <div class="recipient-avatar">
                 <a href="<?php echo bbpm_messages_url($bbpm_chat_id); ?>"><?php echo get_avatar($bbpm_recipient->ID, 99); ?></a>
-                <h3><?php printf( __('Send a new message to %s:', BBP_MESSAGES_DOMAIN), $bbpm_recipient->display_name ); ?></h3>
+                <h3><?php printf( __('Send a new message to %s:', "bbp-messages"), $bbpm_recipient->display_name ); ?></h3>
             </div>
 
             <p>&nbsp;</p>
 
             <p class="form-section<?php echo bbpm_has_errors('message') ? ' has-errors' : ''; ?>">
-                <label for="message"><?php _e('Type a message:', BBP_MESSAGES_DOMAIN); ?></label>
+                <label for="message"><?php _e('Type a message:', "bbp-messages"); ?></label>
                 <?php echo bbpm_message_field(bbpm_old('message', true)); ?>
 
                 <?php if ( bbpm_has_errors('message') ) : ?>
@@ -26,8 +26,8 @@
             <p class="form-submit">
                 <?php wp_nonce_field('send_message', 'bbpm_nonce'); ?>
                 <input type="hidden" name="chat_id" value="<?php echo $bbpm_chat_id; ?>" />
-                <input type="submit" name="send_message" value="<?php esc_attr_e('Send', BBP_MESSAGES_DOMAIN); ?>" />
-                <a href="<?php echo bbpm_messages_url(); ?>"><?php _e('Cancel', BBP_MESSAGES_DOMAIN); ?></a>
+                <input type="submit" name="send_message" value="<?php esc_attr_e('Send', "bbp-messages"); ?>" />
+                <a href="<?php echo bbpm_messages_url(); ?>"><?php _e('Cancel', "bbp-messages"); ?></a>
             </p>
 
         </form>
@@ -38,9 +38,9 @@
 
             <p class="form-section<?php echo bbpm_has_errors('search') ? ' has-errors' : ''; ?>">
 
-                <label for="search"><?php _e('Search and select a contact:', BBP_MESSAGES_DOMAIN); ?></label>
+                <label for="search"><?php _e('Search and select a contact:', "bbp-messages"); ?></label>
 
-                <input type="text" name="search" value="<?php bbpm_old('search'); ?>" placeholder="<?php esc_attr_e('Search', BBP_MESSAGES_DOMAIN); ?>" id="search" />
+                <input type="text" name="search" value="<?php bbpm_old('search'); ?>" placeholder="<?php esc_attr_e('Search', "bbp-messages"); ?>" id="search" />
 
                 <?php if ( bbpm_has_errors('search') ) : ?>
                     <?php bbpm_print_error( 'search' ); ?>
@@ -66,7 +66,7 @@
                     </ul>
                 <?php else : ?>
 
-                    <p><?php _e('No users have matched your search query.', BBP_MESSAGES_DOMAIN); ?></p>
+                    <p><?php _e('No users have matched your search query.', "bbp-messages"); ?></p>
 
                 <?php endif; ?>
 
@@ -74,8 +74,8 @@
 
             <p class="form-submit">
                 <?php wp_nonce_field('bbpm_nonce', 'bbpm_nonce'); ?>
-                <input type="submit" name="select_recipient" value="<?php esc_attr_e('Select recipient', BBP_MESSAGES_DOMAIN); ?>" />
-                <a href="<?php echo bbpm_messages_url(); ?>"><?php _e('Cancel', BBP_MESSAGES_DOMAIN); ?></a>
+                <input type="submit" name="select_recipient" value="<?php esc_attr_e('Select recipient', "bbp-messages"); ?>" />
+                <a href="<?php echo bbpm_messages_url(); ?>"><?php _e('Cancel', "bbp-messages"); ?></a>
             </p>
 
         </form>

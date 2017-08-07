@@ -3,7 +3,7 @@
 class Messages extends \WP_Messages
 {
     public $table = 'bbp_messages_2p0';
-    public $text_domain = BBP_MESSAGES_DOMAIN;
+    public $text_domain = "bbp-messages";
     public $settings;
     public $transient_expiration;
 

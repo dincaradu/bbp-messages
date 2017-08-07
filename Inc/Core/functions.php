@@ -124,7 +124,7 @@ function bbpm_time_diff( $target, $before='', $after='' ) {
         $str .=  ', ';
         break;
     }
-    $str = $str == '' ? _x('a moment', 'time quantities', BBP_MESSAGES_DOMAIN) : substr($str, 0, -2);
+    $str = $str == '' ? _x('a moment', 'time quantities', "bbp-messages") : substr($str, 0, -2);
 
     if( $before ) $before .= ' ';
     if( $after ) $after = ' ' . $after;
@@ -136,18 +136,18 @@ function bbpm_time_diff( $target, $before='', $after='' ) {
 
 function bbpm_time_diff_i18n($unit) {
     $units = array(
-        'year' => _x('year', 'time quantities', BBP_MESSAGES_DOMAIN),
-        'month' => _x('month', 'time quantities', BBP_MESSAGES_DOMAIN),
-        'day' => _x('day', 'time quantities', BBP_MESSAGES_DOMAIN),
-        'hour' => _x('hour', 'time quantities', BBP_MESSAGES_DOMAIN),
-        'minute' => _x('minute', 'time quantities', BBP_MESSAGES_DOMAIN),
-        'second' => _x('second', 'time quantities', BBP_MESSAGES_DOMAIN),
-        'years' => _x('years', 'time quantities', BBP_MESSAGES_DOMAIN),
-        'months' => _x('months', 'time quantities', BBP_MESSAGES_DOMAIN),
-        'days' => _x('days', 'time quantities', BBP_MESSAGES_DOMAIN),
-        'hours' => _x('hours', 'time quantities', BBP_MESSAGES_DOMAIN),
-        'minutes' => _x('minutes', 'time quantities', BBP_MESSAGES_DOMAIN),
-        'seconds' => _x('seconds', 'time quantities', BBP_MESSAGES_DOMAIN),
+        'year' => _x('year', 'time quantities', "bbp-messages"),
+        'month' => _x('month', 'time quantities', "bbp-messages"),
+        'day' => _x('day', 'time quantities', "bbp-messages"),
+        'hour' => _x('hour', 'time quantities', "bbp-messages"),
+        'minute' => _x('minute', 'time quantities', "bbp-messages"),
+        'second' => _x('second', 'time quantities', "bbp-messages"),
+        'years' => _x('years', 'time quantities', "bbp-messages"),
+        'months' => _x('months', 'time quantities', "bbp-messages"),
+        'days' => _x('days', 'time quantities', "bbp-messages"),
+        'hours' => _x('hours', 'time quantities', "bbp-messages"),
+        'minutes' => _x('minutes', 'time quantities', "bbp-messages"),
+        'seconds' => _x('seconds', 'time quantities', "bbp-messages"),
     );
 
     return isset($units[$unit]) ? $units[$unit] : $unit;
@@ -291,7 +291,7 @@ function bbpm_old( $name, $return=null, $default=null, $method='request' ) {
 endif;
 
 function bbpm_message_field($autosave='') {
-    $html = '<textarea name="message" id="message" class="'.(bbpm_has_errors('message')?'has-errors':'').'" required="required" placeholder="' . esc_attr__('Type a message..', BBP_MESSAGES_DOMAIN) . '">' . $autosave . '</textarea>';
+    $html = '<textarea name="message" id="message" class="'.(bbpm_has_errors('message')?'has-errors':'').'" required="required" placeholder="' . esc_attr__('Type a message..', "bbp-messages") . '">' . $autosave . '</textarea>';
 
     if ( bbpm_has_errors('message') ) {
         ob_start();
@@ -451,7 +451,7 @@ function bbpm_parse_youtube_iframe($videoId) {
 
 function bbpm_pending_delete($str, $m) {
     if ( $m->classes && in_array('pending-delete', $m->classes) ) {
-        $str .= __('&nbsp;<em class="bbpm-inline-tooltip">[pending-delete]</em>', BBP_MESSAGES_DOMAIN);
+        $str .= __('&nbsp;<em class="bbpm-inline-tooltip">[pending-delete]</em>', "bbp-messages");
     }
 
     return $str;
@@ -459,7 +459,7 @@ function bbpm_pending_delete($str, $m) {
 
 function bbpm_pending_delete_excerpt($str, $c=null) {
     if ( !empty($c->classes) && in_array('pending-delete', $c->classes) ) {
-        $str .= __('&nbsp;<em class="bbpm-inline-tooltip">[pending-delete]</em>', BBP_MESSAGES_DOMAIN);
+        $str .= __('&nbsp;<em class="bbpm-inline-tooltip">[pending-delete]</em>', "bbp-messages");
     }
 
     return $str;
@@ -506,38 +506,38 @@ function bbpm_get_dynamic_page_title($title='') {
     if ( !trim($messages_title) )
         return $title;
 
-    $title = sprintf(_x('%1$s | %2$s', 'page title format', BBP_MESSAGES_DOMAIN), $messages_title, $title);
+    $title = sprintf(_x('%1$s | %2$s', 'page title format', "bbp-messages"), $messages_title, $title);
 
     return apply_filters('bbpm_get_dynamic_page_title', $title, $raw_title);
 }
 
 function bbpm_get_dynamic_title() {
     if ( bbpm_is_chats() ) {
-        $title = _x('Messages', 'page title format', BBP_MESSAGES_DOMAIN);
+        $title = _x('Messages', 'page title format', "bbp-messages");
     } else if ( bbpm_is_chat_settings() ) {
         global $bbpm_chat;
         if ( isset($bbpm_chat->name) && $bbpm_chat->name ) {
             $title = sprintf(
-                _x("%s &rsaquo; Settings", 'page title format', BBP_MESSAGES_DOMAIN),
+                _x("%s &rsaquo; Settings", 'page title format', "bbp-messages"),
                 $bbpm_chat->name
             );
         } else {
-            $title = _x("Edit chat", 'page title format', BBP_MESSAGES_DOMAIN);
+            $title = _x("Edit chat", 'page title format', "bbp-messages");
         }
     } else if ( bbpm_is_single_chat() ) {
         global $bbpm_chat;
         if ( isset($bbpm_chat->name) && $bbpm_chat->name ) {
             $title = sprintf(
-                _x("Messages &rsaquo; %s", 'page title format', BBP_MESSAGES_DOMAIN),
+                _x("Messages &rsaquo; %s", 'page title format', "bbp-messages"),
                 $bbpm_chat->name
             );
         } else {
-            $title = _x("Messages", 'page title format', BBP_MESSAGES_DOMAIN);
+            $title = _x("Messages", 'page title format', "bbp-messages");
         }
     } else if ( get_query_var('bbpm_new') ) {
-        $title = _x("New Message", 'page title format', BBP_MESSAGES_DOMAIN);
+        $title = _x("New Message", 'page title format', "bbp-messages");
     } else {
-        $title = _x("Messages", 'page title format', BBP_MESSAGES_DOMAIN);
+        $title = _x("Messages", 'page title format', "bbp-messages");
     }
 
     return apply_filters('bbpm_get_dynamic_title', $title);
@@ -607,7 +607,7 @@ To read and reply to this message, click the link below:
 To unsubscribe from notifications from this chat, follow below-link:
 %6$s
 
-To unsubscribe from all notifications, please navigate to your profile edit screen.', BBP_MESSAGES_DOMAIN)),
+To unsubscribe from all notifications, please navigate to your profile edit screen.', "bbp-messages")),
         'html_emails' => false,
         'cache_ctx' => 'object',
         'older_delete_days' => null
@@ -691,10 +691,10 @@ function bbpm_prepare_contact_button($user_id) {
             );
         }
 
-        $btn['link_title'] = sprintf(__('Send %s a Message', BBP_MESSAGES_DOMAIN), $user->display_name);
+        $btn['link_title'] = sprintf(__('Send %s a Message', "bbp-messages"), $user->display_name);
     }
 
-    $btn['inner_text'] = __('Send a Message', BBP_MESSAGES_DOMAIN);
+    $btn['inner_text'] = __('Send a Message', "bbp-messages");
 
     return apply_filters('bbpm_prepare_contact_button', $btn, $user_id);
 }

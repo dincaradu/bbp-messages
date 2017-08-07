@@ -19,7 +19,7 @@
                 <br/>
                 <?php echo apply_filters('bbpm_excerpt', $m->excerpt($message['message'])); ?>
                 <a href="<?php echo bbpm_messages_url($message['chat_id'], $current_user->ID); ?>">
-                    <em>&mdash; <?php printf(__('%s ago', BBP_MESSAGES_DOMAIN), bbpm_time_diff($message['date'])); ?></em>
+                    <em>&mdash; <?php printf(__('%s ago', "bbp-messages"), bbpm_time_diff($message['date'])); ?></em>
                 </a>
             </li>
 
@@ -28,7 +28,7 @@
     </ul>
 <?php else : ?>
 
-    <p><?php _e('No messages were found.', BBP_MESSAGES_DOMAIN); ?></p>
+    <p><?php _e('No messages were found.', "bbp-messages"); ?></p>
 
 <?php endif; ?>
 
