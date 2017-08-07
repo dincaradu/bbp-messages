@@ -46,7 +46,7 @@ function bbp_messages_loaded(){
     global $bbpm_loader;
 
     if( ! class_exists('bbPress') ) {
-        return add_action('admin_init', array($bbpm_loader, 'deactivate'));;
+        return add_action('admin_init', array($bbpm_loader, 'deactivate'));
     }
 
     $bbpm_loader->init();
