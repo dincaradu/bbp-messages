@@ -47,11 +47,12 @@ $bbpm_loader->setup();
 
 // init
 function bbp_messages_loaded(){
+    global $bbpm_loader;
+
     if( ! class_exists('bbPress') ) {
-        return;
+        return add_action('admin_init', array($bbpm_loader, 'deactivate'));;
     }
 
-    global $bbpm_loader;
     $bbpm_loader->init();
 }
 add_action('plugins_loaded', 'bbp_messages_loaded', 10, 0);
