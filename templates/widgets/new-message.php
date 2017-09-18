@@ -16,7 +16,7 @@
 
         <li class="form-section">
             <select name="recipient">
-                <option value=""><?php _e('Select a Contact', "bbp-messages"); ?></option>
+                <option value=""><?php _e('Select a Contact', 'bbp-messages'); ?></option>
                 <?php if ( $getUsers ) : ?>
                     <?php foreach ( $getUsers as $user ) : ?>
 

@@ -10,7 +10,7 @@
         <span class="bbpm-left">
             <?php do_action('bbpm_single_before_chat_icon'); ?>
 
-            <img src="<?php echo esc_url($bbpm_chat->avatar); ?>" alt="<?php esc_attr_e('Chat icon', "bbp-messages"); ?>" height="<?php echo apply_filters('bbpm_single_chat_icon_size', 44); ?>" width="<?php echo apply_filters('bbpm_single_chat_icon_size', 44); ?>" />
+            <img src="<?php echo esc_url($bbpm_chat->avatar); ?>" alt="<?php esc_attr_e('Chat icon', 'bbp-messages'); ?>" height="<?php echo apply_filters('bbpm_single_chat_icon_size', 44); ?>" width="<?php echo apply_filters('bbpm_single_chat_icon_size', 44); ?>" />
 
             <?php do_action('bbpm_single_before_chat_name'); ?>
 
@@ -20,11 +20,11 @@
 
             <?php do_action('bbpm_single_chat_links'); ?>
 
-            <a href="<?php echo bbpm_messages_url(); ?>" class="bbpm-helper" title="<?php _e('Back to chats', "bbp-messages"); ?>">&laquo;</a>
+            <a href="<?php echo bbpm_messages_url(); ?>" class="bbpm-helper" title="<?php _e('Back to chats', 'bbp-messages'); ?>">&laquo;</a>
 
             <?php do_action('bbpm_single_chat_options_link'); ?>
 
-            <a href="<?php echo bbpm_messages_url(sprintf('%s/%s/', $bbpm_chat_id, $bbpm_bases['settings_base'])); ?>" class="bbpm-helper" title="<?php _e('Chat options', "bbp-messages"); ?>"><?php _e('Options', "bbp-messages"); ?></a>
+            <a href="<?php echo bbpm_messages_url(sprintf('%s/%s/', $bbpm_chat_id, $bbpm_bases['settings_base'])); ?>" class="bbpm-helper" title="<?php _e('Chat options', 'bbp-messages'); ?>"><?php _e('Options', 'bbp-messages'); ?></a>
 
             <?php do_action('bbpm_single_after_links'); ?>
         </span>
@@ -32,7 +32,7 @@
         <?php do_action('bbpm_single_before_search'); ?>
 
         <form method="get" action="<?php echo bbpm_messages_url($bbpm_chat_id); ?>">
-            <input type="text" name="search" value="<?php echo esc_attr(bbpm_search_query()); ?>" placeholder="<?php esc_attr_e('Search', "bbp-messages"); ?>" />
+            <input type="text" name="search" value="<?php echo esc_attr(bbpm_search_query()); ?>" placeholder="<?php esc_attr_e('Search', 'bbp-messages'); ?>" />
         </form>
 
         <?php do_action('bbpm_single_after_search'); ?>
@@ -43,7 +43,7 @@
         <?php do_action('bbpm_single_before_body'); ?>
 
         <?php if ( bbpm_search_query() ) : ?>
-            <p><?php printf(__('Showing search results for "%s":', "bbp-messages"), bbpm_search_query()); ?></p>
+            <p><?php printf(__('Showing search results for "%s":', 'bbp-messages'), bbpm_search_query()); ?></p>
         <?php endif; ?>
         
         <form action="<?php echo bbpm_messages_url(sprintf('%s/actions/', $bbpm_chat_id)); ?>" method="post">
@@ -69,7 +69,7 @@
 
                     <?php if ( isset($bbpm_chat->can_mark_unread) && $bbpm_chat->can_mark_unread ) : ?>
                         <div class="bbpm-mark-unread">
-                            <button name="mark_unread"><?php _e('Mark Unread', "bbp-messages"); ?></button>
+                            <button name="mark_unread"><?php _e('Mark Unread', 'bbp-messages'); ?></button>
                         </div>
                     <?php endif;?>
 
@@ -81,14 +81,14 @@
                         <?php do_action('bbpm_single_before_actions_menu_2'); ?>
                         
                         <select name="action">
-                            <option value=""><?php _ex('Bulk Actions', 'bulk actions menu', "bbp-messages"); ?></option>
-                            <option value="delete"><?php _ex('Delete', 'bulk actions menu', "bbp-messages"); ?></option>
+                            <option value=""><?php _ex('Bulk Actions', 'bulk actions menu', 'bbp-messages'); ?></option>
+                            <option value="delete"><?php _ex('Delete', 'bulk actions menu', 'bbp-messages'); ?></option>
                             <?php do_action('bbpm_messages_bulk_actions'); ?>
                         </select>
 
                         <?php do_action('bbpm_single_before_actions_submit'); ?>
 
-                        <input type="submit" name="apply" value="<?php _ex('&check;', 'bulk actions menu', "bbp-messages"); ?>" />
+                        <input type="submit" name="apply" value="<?php _ex('&check;', 'bulk actions menu', 'bbp-messages'); ?>" />
 
                         <?php do_action('bbpm_single_after_actions_submit'); ?>
                     </div>
@@ -101,9 +101,9 @@
                     <?php do_action('bbpm_single_before_chat_read_receipts'); ?>
                 
                     <p class="bbpm-read-receipts">
-                        <?php _ex('&check; Seen', 'message read receipts', "bbp-messages"); ?>
+                        <?php _ex('&check; Seen', 'message read receipts', 'bbp-messages'); ?>
                         <?php foreach ( $bbpm_chat->seen as $user ) : ?>
-                            <span title="<?php printf(__('Seen by %s', "bbp-messages"), $user->display_name); ?>">
+                            <span title="<?php printf(__('Seen by %s', 'bbp-messages'), $user->display_name); ?>">
                                 <?php echo get_avatar($user->ID, 15); ?>
                             </span>
                         <?php endforeach; ?>
@@ -121,13 +121,13 @@
 
                 <?php do_action('bbpm_single_search_no_results'); ?>
 
-                <p class="bbpm-no-items"><?php _e('No messages have matched your search query, please try again with a different search term', "bbp-messages"); ?></p>
+                <p class="bbpm-no-items"><?php _e('No messages have matched your search query, please try again with a different search term', 'bbp-messages'); ?></p>
 
             <?php else : ?>
 
                 <?php do_action('bbpm_single_empty_chat'); ?>
 
-                <p class="bbpm-empty-chat"><?php _e('There are no messages to show.', "bbp-messages"); ?></p>
+                <p class="bbpm-empty-chat"><?php _e('There are no messages to show.', 'bbp-messages'); ?></p>
 
             <?php endif; ?>
 

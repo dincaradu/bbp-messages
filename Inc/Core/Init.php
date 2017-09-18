@@ -139,6 +139,8 @@ class Init
         add_action('bbpm_widget_new_message_start_output', array($this, 'parseNewMessageWidgetErrors'));
         // unslash
         add_filter('bbpm_old_string', 'wp_unslash');
+        // filter menu items HTML
+        add_filter('wp_nav_menu_items', array($this, 'fitlerMenuItems'), 10, 2);
 
         do_action('bbpm_loaded', $this);
     }
@@ -173,7 +175,7 @@ class Init
         if ( !bbpm_verify_nonce('send_message') ) {
             return bbpm_redirect($redirect, 1, 0)->withNotice(array(
                 'nonce',
-                __('Error: Bad authentication!', "bbp-messages"),
+                __('Error: Bad authentication!', 'bbp-messages'),
                 'error'
             ));
         }
@@ -183,7 +185,7 @@ class Init
         if ( !is_object($Messages) ) {
             return bbpm_redirect($redirect, 1, 0)->withNotice(array(
                 'wp_messages',
-                __('Error occured processing your request.', "bbp-messages"),
+                __('Error occured processing your request.', 'bbp-messages'),
                 'error'
             ));
         }
@@ -191,7 +193,7 @@ class Init
         if ( empty($Messages->current_user) ) {
             return bbpm_redirect($redirect, 1, 0)->withNotice(array(
                 'current_user',
-                __('Error: Could not find a sender for this message!', "bbp-messages"),
+                __('Error: Could not find a sender for this message!', 'bbp-messages'),
                 'error'
             ));
         }
@@ -210,7 +212,7 @@ class Init
             if ( !get_userdata($_recipient) ) {
                 return bbpm_redirect($redirect, 1, 0)->withNotice(array(
                     'recipient',
-                    __('Error: Invalid recipient specified!', "bbp-messages"),
+                    __('Error: Invalid recipient specified!', 'bbp-messages'),
                     'error'
                 ));
             } else {
@@ -232,7 +234,7 @@ class Init
         if ( !trim($chat_id) ) {
             return bbpm_redirect($redirect, 1, 0)->withNotice(array(
                 'chat_id',
-                __('Error: Could not find a chat ID for this message!', "bbp-messages"),
+                __('Error: Could not find a chat ID for this message!', 'bbp-messages'),
                 'error'
             ));
         }
@@ -352,7 +354,7 @@ class Init
         if ( !bbpm_verify_nonce("single_actions_{$chat_id}") ) {
             return bbpm_redirect($redirect_to, 1, 0)->withNotice(array(
                 'nonce',
-                __('Error: Bad authentication!', "bbp-messages"),
+                __('Error: Bad authentication!', 'bbp-messages'),
                 'error'
             ));
         }
@@ -394,7 +396,7 @@ class Init
                     if ( !$ids ) {
                         return bbpm_redirect($redirect_to, 1, 0)->withNotice(array(
                             'messages',
-                            __('Error: Please select at least 1 message for this action!', "bbp-messages"),
+                            __('Error: Please select at least 1 message for this action!', 'bbp-messages'),
                             'error'
                         ));
                     }
@@ -405,13 +407,13 @@ class Init
                     // print success message
                     return bbpm_redirect($redirect_to, 1, 0)->withNotice(array(
                         'messages',
-                        __('Your messages are being deleted.', "bbp-messages"),
+                        __('Your messages are being deleted.', 'bbp-messages'),
                         'success'
                     ));
                 } else {
                     return bbpm_redirect($redirect_to, 1, 0)->withNotice(array(
                         'messages',
-                        __('Error: Please select at least 1 message for this action!', "bbp-messages"),
+                        __('Error: Please select at least 1 message for this action!', 'bbp-messages'),
                         'error'
                     ));
                 }
@@ -432,7 +434,7 @@ class Init
             default:
                 return bbpm_redirect($redirect_to, 1, 0)->withNotice(array(
                     'action',
-                    __('Error: Invalid bulk action!', "bbp-messages"),
+                    __('Error: Invalid bulk action!', 'bbp-messages'),
                     'error'
                 ));
                 break;
@@ -449,11 +451,11 @@ class Init
 
         global $bbpm_bases;
 
-        $text = __('Messages', "bbp-messages");
+        $text = __('Messages', 'bbp-messages');
         $uc = bbpm_messages()->getChatsUnreadCount();
 
         if ( $uc ) {
-            $text = sprintf(__('Messages (%d)', "bbp-messages"), $uc);
+            $text = sprintf(__('Messages (%d)', 'bbp-messages'), $uc);
         }
 
         $this->profile_tab = \bbPressProfileTabs::create(array(
@@ -593,7 +595,7 @@ class Init
                     if ( !empty($user->ID) ) {
                         $bbpm_recipient = $user;
                     } else {
-                        bbpm_add_error('recipient', __('Invalid user! Please search and select a recipient below.', "bbp-messages"), 'error');
+                        bbpm_add_error('recipient', __('Invalid user! Please search and select a recipient below.', 'bbp-messages'), 'error');
                     }
                 }
 
@@ -619,7 +621,7 @@ class Init
                     if ( !empty($user->ID) ) {
                         $bbpm_recipient = $user;
                     } else {
-                        bbpm_add_error('recipient', __('Invalid user! Please search and select a recipient below.', "bbp-messages"), 'error');
+                        bbpm_add_error('recipient', __('Invalid user! Please search and select a recipient below.', 'bbp-messages'), 'error');
                     }
                 }
 
@@ -646,7 +648,7 @@ class Init
                 unset($GLOBALS['bbpm_recipient']);
                 bbpm_add_error(
                     'recipient',
-                    __('Sorry, you cannot contact this user. Please search and select a recipient below.', "bbp-messages"),
+                    __('Sorry, you cannot contact this user. Please search and select a recipient below.', 'bbp-messages'),
                     'error'
                 );
             }
@@ -709,7 +711,7 @@ class Init
 
             return bbpm_redirect(bbpm_messages_url(), 1, 0)->withNotice(array(
                 '404_chat',
-                __('Error: Could not find chat!', "bbp-messages"),
+                __('Error: Could not find chat!', 'bbp-messages'),
                 'error'
             ));
         }
@@ -992,7 +994,7 @@ class Init
 
         return bbpm_redirect(bbpm_messages_url($chat_id, $m->current_user), 1, 0)->withNotice(array(
             'updated',
-            __('Settings updated successfully!', "bbp-messages"),
+            __('Settings updated successfully!', 'bbp-messages'),
             'success'
         ));
     }
@@ -1002,7 +1004,7 @@ class Init
         if ( !bbpm_verify_nonce("delete_chat_{$chat_id}", 'delete_chat_nonce') ) {
             return bbpm_redirect($redirect_to, 1, 0)->withNotice(array(
                 'nonce',
-                __('Error: Bad authentication!', "bbp-messages"),
+                __('Error: Bad authentication!', 'bbp-messages'),
                 'error'
             ));
         }
@@ -1013,7 +1015,7 @@ class Init
 
         return bbpm_redirect(bbpm_messages_url(null, $messages->current_user), 1, 0)->withNotice(array(
             'delete',
-            __('Your chat is being deleted.', "bbp-messages"),
+            __('Your chat is being deleted.', 'bbp-messages'),
             'success'
         ));
     }
@@ -1028,14 +1030,14 @@ class Init
 
             return bbpm_redirect(bbpm_messages_url(null, $messages->current_user), 1, 0)->withNotice(array(
                 'mark_unread',
-                __('Chat successfully marked unread.', "bbp-messages"),
+                __('Chat successfully marked unread.', 'bbp-messages'),
                 'success'
             ));
         }
 
         return bbpm_redirect($redirect_to, 1, 0)->withNotice(array(
             'mark_unread',
-            __('Error: could not mark chat unread.', "bbp-messages"),
+            __('Error: could not mark chat unread.', 'bbp-messages'),
             'error'
         ));
     }
@@ -1059,7 +1061,7 @@ class Init
                 if ( !bbpm_can_contact($contact, $m->current_user) ) {
                     bbpm_add_error('cannot-contact', __(
                         'Sorry, you cannot contact this user!',
-                        "bbp-messages"
+                        'bbp-messages'
                     ), 'error');
                 }
             }
@@ -1098,5 +1100,26 @@ class Init
     public function enqueueStyleCSS()
     {
         return wp_enqueue_style('bbpm-style');
+    }
+
+    public function fitlerMenuItems($html, $term)
+    {
+        global $current_user, $bbpm_options;
+
+        switch ( true ) {
+            case !is_user_logged_in():
+            case !isset($bbpm_options['menu_locations']) || !$bbpm_options['menu_locations']:
+            case !isset($term->menu) || !in_array($term->menu->term_id, $bbpm_options['menu_locations']):
+                return $html;
+                break;
+        }
+
+        $html .= sprintf(
+            '<li class="bbpm-menu-item"><a href="%s">%s</a></li>',
+            bbpm_messages_url(null, $current_user->ID),
+            do_shortcode($bbpm_options['menu_text'])
+        );
+
+        return $html;
     }
 }

@@ -4,7 +4,7 @@ Plugin Name: bbPress Messages
 Plugin URI: https://github.com/elhardoum/bbp-messages
 Description: Simple yet powerful private messaging system tailored for bbPress.
 Author: Samuel Elh
-Version: 2.0.7
+Version: 2.0.8
 Author URI: https://samelh.com
 Text Domain: bbp-messages
 Donate link: https://paypal.me/samelh

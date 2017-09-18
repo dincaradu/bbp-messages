@@ -27,7 +27,7 @@ class bbPMessages
         add_filter('bbpm_bbpm_importer_message_str', array($this, 'fixLtGt'));
 
         $this->admin()->feedback(sprintf(
-            __('<strong>bbPress Messages v2:</strong> Import older messages now from legacy data table. Click <a href="%1$s">here</a> to begin import or <a href="%2$s">dismiss</a> this notice.', "bbp-messages"),
+            __('<strong>bbPress Messages v2:</strong> Import older messages now from legacy data table. Click <a href="%1$s">here</a> to begin import or <a href="%2$s">dismiss</a> this notice.', 'bbp-messages'),
             ($network_active ? network_admin_url('admin.php') : admin_url('admin.php')) . (
                 '?page=bbpm-bbpm-import'
             ),
@@ -42,7 +42,7 @@ class bbPMessages
         return array_merge($tabs, array(
             'bbpm-import' => array(
                 'id' => 'bbpm-import',
-                'name' => __('bbPM importer', "bbp-messages"),
+                'name' => __('bbPM importer', 'bbp-messages'),
                 'content_callback' => array($this, 'screen'),
                 'update_callback' => array($this, 'update'),
                 'request_handler' => array($this, 'request')
@@ -65,7 +65,7 @@ class bbPMessages
             return;
 
         if ( !isset($_POST['_wpnonce']) || !wp_verify_nonce($_POST['_wpnonce'], 'bbpm_import') ) {
-            return $this->admin()->feedback(__('Error: Bad authentication!', "bbp-messages"), false);
+            return $this->admin()->feedback(__('Error: Bad authentication!', 'bbp-messages'), false);
         }
 
         $this->extract();
@@ -82,21 +82,21 @@ class bbPMessages
 
         <form method="post">
 
-            <p><?php printf(__('Import older messages from legacy database table <code>%s</code>.', "bbp-messages"), $table); ?></p>
+            <p><?php printf(__('Import older messages from legacy database table <code>%s</code>.', 'bbp-messages'), $table); ?></p>
 
-            <p><?php _e('If you have already imported messages using this tool, please dismiss this as it will not prevent duplicate records from inserting.', "bbp-messages"); ?></p>
+            <p><?php _e('If you have already imported messages using this tool, please dismiss this as it will not prevent duplicate records from inserting.', 'bbp-messages'); ?></p>
 
-            <p><?php _e('Once you click import, the plugin will begin fetching messages from older database table and appending them to the new one.', "bbp-messages"); ?></p>
+            <p><?php _e('Once you click import, the plugin will begin fetching messages from older database table and appending them to the new one.', 'bbp-messages'); ?></p>
 
-            <p><?php _e('Please make sure not to cancel the import by pressing the escape key, or browser refresh or back button, until it is fully done.', "bbp-messages"); ?></p>
+            <p><?php _e('Please make sure not to cancel the import by pressing the escape key, or browser refresh or back button, until it is fully done.', 'bbp-messages'); ?></p>
 
-            <p><?php _e('Please note that this may take a while, depending on how many messages we\'re importing, just in case you were confused.', "bbp-messages"); ?></p>
+            <p><?php _e('Please note that this may take a while, depending on how many messages we\'re importing, just in case you were confused.', 'bbp-messages'); ?></p>
 
-            <p><label><input type="checkbox" name="delete_after_done" /> <?php printf(__('Delete <code>%s</code> legacy database table after import done', "bbp-messages"), $table); ?></label></p>
+            <p><label><input type="checkbox" name="delete_after_done" /> <?php printf(__('Delete <code>%s</code> legacy database table after import done', 'bbp-messages'), $table); ?></label></p>
 
             <input type="hidden" name="_begin_import" value="1" />
             <?php wp_nonce_field('bbpm_import', '_wpnonce'); ?>
-            <?php submit_button(__('Begin Import', "bbp-messages")); ?>
+            <?php submit_button(__('Begin Import', 'bbp-messages')); ?>
 
         </form>
 
@@ -272,10 +272,10 @@ class bbPMessages
         }
 
         if ( empty($inserted) ) {
-            $this->admin()->feedback(__('Error occured, no messages were imported.', "bbp-messages"), false);
+            $this->admin()->feedback(__('Error occured, no messages were imported.', 'bbp-messages'), false);
         } else {
             $this->admin()->feedback(sprintf(
-                __('Import done: successfully imported %1$d messages from %2$d total (IDs from %3$d to %4$d)', "bbp-messages"),
+                __('Import done: successfully imported %1$d messages from %2$d total (IDs from %3$d to %4$d)', 'bbp-messages'),
                 count($inserted),
                 $raw_count,
                 isset($inserted[0]) ? $inserted[0] : 0,
@@ -285,12 +285,12 @@ class bbPMessages
             if ( isset($_POST['delete_after_done']) ) {
                 if ( $wpdb->query("DROP TABLE {$table}") ) {
                     $this->admin()->feedback(sprintf(
-                        __('Database table %s successfully deleted.', "bbp-messages"),
+                        __('Database table %s successfully deleted.', 'bbp-messages'),
                         $table
                     ), true);
                 } else {
                     $this->admin()->feedback(sprintf(
-                        __('Error: Could not delete database table %s.', "bbp-messages"),
+                        __('Error: Could not delete database table %s.', 'bbp-messages'),
                         $table
                     ), false);
                 }

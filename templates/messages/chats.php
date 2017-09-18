@@ -13,7 +13,7 @@
         <span class="bbpm-left">
             <?php do_action('bbpm_chats_header_before_nav_links'); ?>
 
-            <a href="<?php echo bbpm_messages_url($bbpm_bases['new']); ?>" class="bbpm-new"><?php _e('&plus; New Message', "bbp-messages"); ?></a>
+            <a href="<?php echo bbpm_messages_url($bbpm_bases['new']); ?>" class="bbpm-new"><?php _e('&plus; New Message', 'bbp-messages'); ?></a>
 
             <?php do_action('bbpm_chats_header_nav_links'); ?>
         </span>
@@ -21,7 +21,7 @@
         <?php do_action('bbpm_chats_header_before_search_form'); ?>
 
         <form method="get" action="<?php echo bbpm_messages_url(); ?>">
-            <input type="text" name="search" value="<?php echo esc_attr(bbpm_search_query()); ?>" placeholder="<?php esc_attr_e('Search', "bbp-messages"); ?>" />
+            <input type="text" name="search" value="<?php echo esc_attr(bbpm_search_query()); ?>" placeholder="<?php esc_attr_e('Search', 'bbp-messages'); ?>" />
         </form>
 
         <?php do_action('bbpm_chats_after_header_content'); ?>
@@ -32,7 +32,7 @@
 
         <?php if ( bbpm_search_query() ) : ?>
         
-            <p><?php printf(__('Showing search results for "%s":', "bbp-messages"), bbpm_search_query()); ?></p>
+            <p><?php printf(__('Showing search results for "%s":', 'bbp-messages'), bbpm_search_query()); ?></p>
         
         <?php endif; ?>
 
@@ -50,11 +50,11 @@
 
         <?php elseif ( bbpm_search_query() ) : ?>
 
-            <p class="bbpm-no-items"><?php _e('No chats have matched your search query, please try again with a different search term', "bbp-messages"); ?></p>
+            <p class="bbpm-no-items"><?php _e('No chats have matched your search query, please try again with a different search term', 'bbp-messages'); ?></p>
 
         <?php else : ?>
 
-            <p class="bbpm-no-chats"><?php printf(__('There are no chats to show. Get started by <a href="%s">sending a message &raquo;</a>', "bbp-messages"), bbpm_messages_url($bbpm_bases['new'])); ?></p>
+            <p class="bbpm-no-chats"><?php printf(__('There are no chats to show. Get started by <a href="%s">sending a message &raquo;</a>', 'bbp-messages'), bbpm_messages_url($bbpm_bases['new'])); ?></p>
 
         <?php endif; ?>
 

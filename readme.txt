@@ -61,6 +61,10 @@ Enjoy!
 5. Admin settings screen
 
 == Changelog ==
+= 2.0.8 =
+* A quick update to merge the github updates into wp
+* Add messages counter to menu (see https://wordpress.org/support/?p=9319644)
+
 = 2.0.7 =
 * See Github <a href="https://github.com/elhardoum/bbp-messages/issues/1">#1</a> 
 

@@ -10,41 +10,41 @@ class Shortcodes
             'bbpm-unread-count' => array(
                 'callback' => array($this, 'unreadCount'),
                 'attributes' => array(
-                    'user_id' => __('Specify which user to get the unread messages count. (Optional, defaults to current user ID if logged-in.)', "bbp-messages"),
-                    'unique' => __('If true, we will count only how many chats have unread messages, instead of total unread messages. (Optional, defaults to false)', "bbp-messages")
+                    'user_id' => __('Specify which user to get the unread messages count. (Optional, defaults to current user ID if logged-in.)', 'bbp-messages'),
+                    'unique' => __('If true, we will count only how many chats have unread messages, instead of total unread messages. (Optional, defaults to false)', 'bbp-messages')
                 ),
-                'about' => __('Get the unread messages/chats counts for a given user.', "bbp-messages")
+                'about' => __('Get the unread messages/chats counts for a given user.', 'bbp-messages')
             ),
             'bbpm-contact-link' => array(
                 'callback' => array($this, 'contactLink'),
                 'attributes' => array(
-                    'user_id' => __('Specify which user to return link to chat with. (required)', "bbp-messages"),
-                    'current_user' => __('Specify which for which user to return the contact link. (Optional, defaults to current logged-in user)', "bbp-messages"),
+                    'user_id' => __('Specify which user to return link to chat with. (required)', 'bbp-messages'),
+                    'current_user' => __('Specify which for which user to return the contact link. (Optional, defaults to current logged-in user)', 'bbp-messages'),
                 ),
-                'about' => __('Returns an URL to chat with the user ID specified. If no user is logged-in, it will return a login URL.', "bbp-messages")
+                'about' => __('Returns an URL to chat with the user ID specified. If no user is logged-in, it will return a login URL.', 'bbp-messages')
             ),
             'bbpm-messages-link' => array(
                 'callback' => array($this, 'messagesLink'),
                 'attributes' => array(
-                    'user_id' => __('Specify which user to return messages link. (Optional, defaults to current user if logged-in)', "bbp-messages")
+                    'user_id' => __('Specify which user to return messages link. (Optional, defaults to current user if logged-in)', 'bbp-messages')
                 ),
-                'about' => __('Get the messages URL of a given user, where they can browse their messages.', "bbp-messages")
+                'about' => __('Get the messages URL of a given user, where they can browse their messages.', 'bbp-messages')
             ),
             'bbpm-messages-count' => array(
                 'callback' => array($this, 'messagesCount'),
                 'attributes' => array(
-                    'user_id' => __('Specify which user to return messages count. (Optional, defaults to current user if logged-in)', "bbp-messages"),
-                    'contact_or_chat_id' => __('Count total messages in a single chat, specify the chat ID or the user contact.', "bbp-messages")
+                    'user_id' => __('Specify which user to return messages count. (Optional, defaults to current user if logged-in)', 'bbp-messages'),
+                    'contact_or_chat_id' => __('Count total messages in a single chat, specify the chat ID or the user contact.', 'bbp-messages')
                 ),
-                'about' => __('Counts users total messages for all chats or a single chat', "bbp-messages")
+                'about' => __('Counts users total messages for all chats or a single chat', 'bbp-messages')
             ),
             'bbpm-chat-unread-count' => array(
                 'callback' => array($this, 'chatUnreadCount'),
                 'attributes' => array(
-                    'user_id' => __('Specify which user to return unread messages count. (Optional, defaults to current user if logged-in)', "bbp-messages"),
-                    'contact_or_chat_id' => __('Count total unread messages in a single chat, specify the chat ID or the user contact.', "bbp-messages")
+                    'user_id' => __('Specify which user to return unread messages count. (Optional, defaults to current user if logged-in)', 'bbp-messages'),
+                    'contact_or_chat_id' => __('Count total unread messages in a single chat, specify the chat ID or the user contact.', 'bbp-messages')
                 ),
-                'about' => __('Counts users total unread messages for a single chat', "bbp-messages")
+                'about' => __('Counts users total unread messages for a single chat', 'bbp-messages')
             )
         );
     }
@@ -60,7 +60,7 @@ class Shortcodes
             // bbpm_admin_screen()->registerTab(array(
             //     'shortcodes' => array(
             //         'id' => 'shortcodes',
-            //         'name' => __('Shortcodes', "bbp-messages"),
+            //         'name' => __('Shortcodes', 'bbp-messages'),
             //         'content_callback' => array($this, 'adminScreen')
             //     )
             // ))->prepare();
@@ -191,7 +191,7 @@ class Shortcodes
         return array_merge((array) $tabs, array(
             'shortcodes' => array(
                 'id' => 'shortcodes',
-                'name' => __('Shortcodes', "bbp-messages"),
+                'name' => __('Shortcodes', 'bbp-messages'),
                 'content_callback' => array($this, 'adminScreen')
             )
         ));
@@ -203,9 +203,9 @@ class Shortcodes
         <table class="form-table widefat striped">
             <thead>
                 <tr>
-                    <th style="padding-left:10px"><?php _ex('Shortcode', 'shortcodes admin', "bbp-messages"); ?></th>
-                    <th style="padding-left:10px"><?php _ex('Usage', 'shortcodes admin', "bbp-messages"); ?></th>
-                    <th style="padding-left:10px"><?php _ex('Attributes', 'shortcodes admin', "bbp-messages"); ?></th>
+                    <th style="padding-left:10px"><?php _ex('Shortcode', 'shortcodes admin', 'bbp-messages'); ?></th>
+                    <th style="padding-left:10px"><?php _ex('Usage', 'shortcodes admin', 'bbp-messages'); ?></th>
+                    <th style="padding-left:10px"><?php _ex('Attributes', 'shortcodes admin', 'bbp-messages'); ?></th>
                 </tr>
             </thead>
 
@@ -220,7 +220,7 @@ class Shortcodes
                         <?php if ( isset($data['about']) && $data['about'] ) : ?>
                             <span><?php echo esc_attr($data['about']); ?></span>
                         <?php else : ?>
-                            <?php _e('NULL', "bbp-messages"); ?>
+                            <?php _e('NULL', 'bbp-messages'); ?>
                         <?php endif; ?>
                     </td>
 
@@ -233,7 +233,7 @@ class Shortcodes
                                 </li>
                             <?php endforeach; ?>
                         <?php else : ?>
-                            <?php _e('NULL', "bbp-messages"); ?>
+                            <?php _e('NULL', 'bbp-messages'); ?>
                         <?php endif; ?>
                     </td>
                 </tr>
@@ -242,14 +242,14 @@ class Shortcodes
 
             <tfoot>
                 <tr>
-                    <th style="padding-left:10px"><?php _ex('Shortcode', 'shortcodes admin', "bbp-messages"); ?></th>
-                    <th style="padding-left:10px"><?php _ex('Usage', 'shortcodes admin', "bbp-messages"); ?></th>
-                    <th style="padding-left:10px"><?php _ex('Attributes', 'shortcodes admin', "bbp-messages"); ?></th>
+                    <th style="padding-left:10px"><?php _ex('Shortcode', 'shortcodes admin', 'bbp-messages'); ?></th>
+                    <th style="padding-left:10px"><?php _ex('Usage', 'shortcodes admin', 'bbp-messages'); ?></th>
+                    <th style="padding-left:10px"><?php _ex('Attributes', 'shortcodes admin', 'bbp-messages'); ?></th>
                 </tr>
             </tfoot>
         </table>
 
-        <p><?php _e('See <a href="https://codex.wordpress.org/Shortcode">Shortcode</a> documentation if you need help with shortcodes.', "bbp-messages"); ?></p>
+        <p><?php _e('See <a href="https://codex.wordpress.org/Shortcode">Shortcode</a> documentation if you need help with shortcodes.', 'bbp-messages'); ?></p>
 
         <?php
     }

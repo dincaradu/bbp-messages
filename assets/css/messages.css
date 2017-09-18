@@ -18,6 +18,7 @@
 
 .bbpm textarea[name="message"] {
     border: 1px solid #ddd;
+    min-height: 120px;
 }
 
 .bbpm-items .bbpm-head .bbpm-left .bbpm-new,
