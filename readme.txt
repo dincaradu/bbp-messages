@@ -2,8 +2,8 @@
 Contributors: elhardoum
 Tags: messages, bbPress, forums, private messages, buddypress, contact, widget, embed, conversations, notifications, email, child themes
 Requires at least: 3.0.1
-Tested up to: 4.7.3
-Stable tag: 2.0.7
+Tested up to: 4.8.1
+Stable tag: 2.0.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Author URI: http://samelh.com/
