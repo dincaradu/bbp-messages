@@ -2,12 +2,12 @@
 Contributors: elhardoum
 Tags: messages, bbPress, forums, private messages, buddypress, contact, widget, embed, conversations, notifications, email, child themes
 Requires at least: 3.0.1
-Tested up to: 4.8.1
-Stable tag: 2.0.8.1
+Tested up to: 4.8.3
+Stable tag: 2.0.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Author URI: http://samelh.com/
-Donate link: https://paypal.me/samelh
+Author URI: https://samelh.com
+Donate link: https://go.samelh.com/buy-me-a-coffee
 
 bbPress Messages - Simple yet powerful private messaging system tailored for bbPress.
 
