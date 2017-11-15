@@ -46,7 +46,7 @@ Class bbPMCheckReady
         if ( $this->hasErrors() ) {
             $prefix = is_multisite() && is_network_admin() ? 'network_' : '';
             add_action($prefix . 'admin_notices', array($this, "notice"), 999);
-        } else {
+        } else if ( 'cli' != php_sapi_name() ) {
             add_action('activated_plugin', array($this, 'redirect'));
         }
     }

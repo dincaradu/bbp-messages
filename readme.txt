@@ -61,6 +61,9 @@ Enjoy!
 5. Admin settings screen
 
 == Changelog ==
+= 2.0.9 =
+* PHP <5.4: fix `Using $this when not in object context` (see https://wordpress.org/support/?p=9307124)
+
 = 2.0.8 =
 * A quick update to merge the github updates into wp
 * Add messages counter to menu (see https://wordpress.org/support/?p=9319644)
