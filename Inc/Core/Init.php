@@ -1109,17 +1109,17 @@ class Init
         switch ( true ) {
             case !is_user_logged_in():
             case !isset($bbpm_options['menu_locations']) || !$bbpm_options['menu_locations']:
-            case !isset($term->menu) || !in_array($term->menu->term_id, $bbpm_options['menu_locations']):
+            case !isset($term->menu->term_id) || !in_array($term->menu->term_id, $bbpm_options['menu_locations']):
                 return $html;
                 break;
+
+            default:
+                return $html . sprintf(
+                    '<li class="bbpm-menu-item"><a href="%s">%s</a></li>',
+                    bbpm_messages_url(null, $current_user->ID),
+                    do_shortcode($bbpm_options['menu_text'])
+                );
+                break;
         }
-
-        $html .= sprintf(
-            '<li class="bbpm-menu-item"><a href="%s">%s</a></li>',
-            bbpm_messages_url(null, $current_user->ID),
-            do_shortcode($bbpm_options['menu_text'])
-        );
-
-        return $html;
     }
 }

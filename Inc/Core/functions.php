@@ -416,18 +416,15 @@ function bbpm_parse_youtube($str) {
     $UrlsPattern = '~<a.*?</a>(*SKIP)(*F)|https?://\S+~';
 
     if ( preg_match($UrlsPattern, $str) ) {
-
-        global $bbpm_yt_pattern;
-        $bbpm_yt_pattern = apply_filters(
+        $pattern = apply_filters(
             'bbpm_parse_youtube_pattern',
             "/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/"
         );
 
-        $str = preg_replace_callback($UrlsPattern, function($m){
+        $str = preg_replace_callback($UrlsPattern, function($m) use ($pattern){
             $m = array_shift($m);
-            global $bbpm_yt_pattern;
 
-            preg_match($bbpm_yt_pattern, $m, $yt);
+            preg_match($pattern, $m, $yt);
 
             if ( $yt && !empty($yt[1]) ) {
                 return bbpm_parse_youtube_iframe($yt[1]);

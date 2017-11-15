@@ -1947,10 +1947,9 @@ class WP_Messages
             $curr_ids = $this->pagi_current_data;
 
             if ( $curr_ids ) {
-                $curr_ids = array_map(function($id){
-                    $cacheKey = "message_{$id}";
-                    $cached = $this->getCache($cacheKey);
-                    if ( false !== $cached ) {
+                $getCacheCtx = array($this, 'getCache');
+                $curr_ids = array_map(function($id) use ($getCacheCtx){
+                    if ( $cached = call_user_func($getCacheCtx, "message_{$id}") ) {
                         return $cached;
                     }
                     return $id;
